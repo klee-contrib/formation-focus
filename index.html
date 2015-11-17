@@ -92,7 +92,7 @@
 					</ul>
 				</section>
 				<section>
-					<h2>Faire du sur mesure facilement 20 % des écrans personnalisés de l'application</h2>
+					<h2>Faire facilement du sur mesure 20 % des écrans de l'application</h2>
 				</section>
 				<section data-background='http://www.friteries-sensas.fr/gifs/presse1.jpg'>
 					<h1 class='redTransparent'>Le bureau Focus</h1>
@@ -168,14 +168,275 @@
 			<section><h1><a href='http://kleegroup.github.io/focus-docs/contribute/index.html'>Contribuez à Focus</a></h1></section>
 			<section>Articles, Fork, issues, PR, doc, tuto, DX ...</section>
 			</section>
-			<section><h1>Les domaines et les définitions</h1></section>
+			<section data-background='https://media.giphy.com/media/Sq4QZyBwagvle/giphy.gif'><h1>Focus.js</h1></section>
+			<section>
+				<section><h1>Le router de l'application</h1></section>
+				<section data-markdown>
+					## [Router](http://backbonejs.org/#Router)
+
+					![router](https://s3.amazonaws.com/media-p.slid.es/uploads/52889/images/1647955/router.PNG)
+				</section>
+				<section>
+					<h2>Exemple de router</h2>
+					<pre>
+						<code class='javascript'>
+import {application, router} from 'focus-core';
+import MovieDetailView from '../views/movie/detail';
+
+const MoviesRouter = router.extend({
+    log: true,
+    beforeRoute() {
+        application.changeRoute('movies');
+    },
+    routes: {
+		'movies/:id': 'movieDetail'
+    },
+    movieDetail(id) {
+        this._pageContent(MovieDetailView, {props: {id}});
+    }
+});
+new MoviesRouter();
+						</code>
+					</pre>
+
+				</section>
+			</section>
+			<section>
+				<section><h1>Les domaines et les définitions</h1></section>
+				<section data-markdown>
+					## les domaines
+
+					- Responsable de la validation
+					- Du composant de rendu (consultation, édition)
+					- formatage  des données
+					- On peut les utiliser pour le style
+					- Utilisation intelligente avec `fieldFor`
+				</section>
+				<section data-markdown>
+## example du domaine do-date.js
+
+```javascript
+import moment from 'moment';
+import {Date as DateComponent} from 'focus-components/components/input';
+
+export default {
+    InputComponent: DateComponent,
+    formatter: date => date ? moment(date, moment.ISO_8601).format('DD/MM/YYYY') : '',
+    format: ['DD/MM/YYYY', 'DD-MM-YYYY', 'D MMM YYYY']
+};
+```
+				</section>
+				<section data-markdown>
+					## Les définitions
+
+- Générées depuis le modèle de données
+- Lie le modèle de données ayu domaines
+- Chaque table a des champs
+- Chaque champ a un domaine
+- Chaque champ porte l'information requis / non requis
+				</section>
+				<section data-markdown>
+## example de définitions
+
+```javascript
+export const movie = {
+    code: {
+        domain: 'DO_ID',
+        required: true
+    },
+    title: {
+        domain: 'DO_LABEL_LONG',
+        required: true
+    },
+	creationDate: {
+		domain: 'DO_DATE',
+		required: false
+	}
+}
+
+// fieldFor(creationDate)
+```
+				</section>
+
+			</section>
 			<section>
 				<section><h1>Flux by Focus</h1></section>
-				<section data-background='https://s3.amazonaws.com/media-p.slid.es/uploads/52889/images/1647926/archi.PNG'></section>
+				<section data-markdown>
+					## flux by Facebook
+
+					![flux](https://facebook.github.io/flux/img/flux-simple-f8-diagram-with-client-action-1300w.png)
+				</section>
+				<section data-markdown>
+					## Architecture
+
+					![archi](https://s3.amazonaws.com/media-p.slid.es/uploads/52889/images/1647926/archi.PNG)
+				</section>
+				<section data-markdown>
+					# les stores
+
+					![stores](https://s3.amazonaws.com/media-p.slid.es/uploads/52889/images/1647931/store.PNG)
+				</section>
+				<section data-markdown>
+					# Flux
+
+					![flux1](https://s3.amazonaws.com/media-p.slid.es/uploads/52889/images/1647945/focus-flux1.PNG)
+				</section>
+				<section data-markdown>
+					# flux
+
+					![flux2](https://s3.amazonaws.com/media-p.slid.es/uploads/52889/images/1647946/focus-flux2.PNG)
+				</section>
+				<section data-markdown>
+# Service
+
+- Un service est une fonction
+- Un service appelle une url construite grâce à [urlbuilder](https://github.com/KleeGroup/focus-core/blob/develop/src/list/action-builder.js)
+- Un service retourne une `Promise`
+- On peut utiliser la méthode `fetch` de [focus](https://github.com/KleeGroup/focus-core/blob/develop/src/network/fetch.js)
+				</section>
+				<section>
+					<h2>Exemple de service (retourne impérativement une Promise)</h2>
+					<pre>
+						<code class='javascript'>
+import fetch from 'focus-core/network/fetch';
+//Fait une reqête ajax
+import movieUrl from '../config/server/movies';
+// Les urls de ws sont configurées
+export default {
+    loadMovie(id) {
+        return fetch(movieUrl.loadMovie({urlData: {id}}));
+    },
+    saveMovieSynopsis(data) {
+        return fetch(movieUrl.saveMovie({urlData: {id: data.id}, data: {data}}));
+    },
+    saveMovieCaracteristics(data) {
+        return fetch(movieUrl.saveMovie({urlData: {id: data.id}, data: {data}}));
+    }
+}
+						</code>
+					</pre>
+				</section>
+				<section data-markdown>
+# store
+
+- Un store est un objet qui contient une grappe de données
+- Associé à une notion de grappe d'objet ([corestore](https://github.com/KleeGroup/focus-core/blob/develop/src/store/CoreStore.js))
+- Il existe des stores spécialisées ([recherche](https://github.com/KleeGroup/focus-core/tree/develop/src/store/search), [liste](https://github.com/KleeGroup/focus-core/tree/develop/src/store/search))
+- Il peut notifier: d'un changement, d'une erreur
+- Chaque noeud de données peut avoir un statut
+				</section>
+				<section>
+					<h2>Exemple de store</h2>
+					<pre>
+						<code class='javascript'>
+import {CoreStore} from 'focus-core/store';
+const movieStore = new CoreStore({
+    definition: {
+        movie: 'movie',
+		actors: 'actors'
+    }
+});
+
+export default movieStore;
+						</code>
+					</pre>
+				</section>
+				<section data-markdown>
+# action
+
+- Une action est une fonction
+- Une action doit appeller un service
+- Avec le retour (après l'appel serveur)
+- Dispatch le résultat dans le `dispatcher`
+- On peut utiliser le `actionBuilder` ([detail](https://github.com/KleeGroup/focus-core/blob/develop/src/application/action-builder.js), [recherche](https://github.com/KleeGroup/focus-core/blob/develop/src/search/action-builder.js), [liste](https://github.com/KleeGroup/focus-core/blob/develop/src/list/action-builder.js))
+				</section>
+				<section>
+					<h2>Exemple d'action</h2>
+					<pre>
+						<code class='javascript'>
+import actionBuilder from 'focus-core/application/action-builder';
+import {loadMovie, saveMovieSynopsis} from '../services/movie';
+
+export const synopsisActions = {
+    load: actionBuilder({
+        node: 'movie',
+        service: loadMovie,
+        shouldDumpStoreOnActionCall: true,
+        status: 'loaded'
+    }),
+    save: actionBuilder({
+        node: 'movie',
+        service: saveMovieSynopsis,
+        shouldDumpStoreOnActionCall: true,
+        status: 'saved'
+    })
+}
+						</code>
+					</pre>
+				</section>
+				<section data-background='http://auto.mgl.skyrock.net/art/SHAR.8448.337.2.jpg'>
+					<h2>Un exemple de composant mis en musique</h2>
+					<pre>
+						<code class="javascript">
+//librairies
+import React, {PropTypes} from 'react';
+import FocusComponents from 'focus-components';
+
+// web components
+import Panel from 'focus-components/components/panel';
+import {mixin as formMixin} from 'focus-components/common/form';
+
+//stores & actions
+import movieStore from '../../../stores/movie';
+import {caracteristicsActions} from '../../../action/movie';
+
+export default React.createClass({
+    displayName: 'MovieCaracteristics',
+    propTypes: {
+        id: PropTypes.number
+    },
+    mixins: [formMixin],
+    definitionPath: 'movie',
+    stores: [{store: movieStore, properties: ['movie']}],
+    action: caracteristicsActions,
+
+    /** @inheritDoc */
+    renderContent() {
+        return (
+            <Panel actions={this._renderActions} title='movie.detail.caracteristics'>
+                {this.fieldFor('title')}
+                {this.fieldFor('originalTitle')}
+                {this.fieldFor('keywords')}
+                {this.fieldFor('runtime')}
+                {this.fieldFor('movieType')}
+                {this.fieldFor('productionYear')}
+                {this.fieldFor('trailerName')}
+                {this.fieldFor('trailerHRef')}
+            </Panel>
+        );
+    }
+});
+						</code>
+					</pre>
+				</section>
 			</section>
-			<section><h1>Les composants / fonctions à connaître</h1></section>
-			<section><h1>Le router de l'application</h1></section>
-		</div>
+			<section>
+				<section><h2>Les composants / fonctions à connaître</h2></section>
+				<section><h2>Les composants de layout</h2></section>
+				<section><h2>storebehaviour</h2></section>
+				<section><h2>definitionBehaviour</h2></section>
+				<section><h2>formMixin</h2></section>
+				<section><h2>Les composants de construction de page</h2></section>
+				<section><h2>fieldBehaviour</h2></section>
+			</section>
+			<section data-markdown>
+				## Structure applicative
+
+				- [Focus docs](http://kleegroup.github.io/focus-docs/getting-started/starter-kit.html)
+				- [Focus demo app](https://github.com/KleeGroup/focus-demo-app)
+			</section>
+			<section data-background='https://mtpmcg.files.wordpress.com/2014/07/thanks-b-fr-mtpmcg714-sm-2163.jpg'></section>
+					</div>
 	</div>
 	<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js">
