@@ -137,6 +137,7 @@
 				<section data-background='https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png'>
 <h2 class='blackTransparent'>github</h2>
 			</section>
+			<section><h1><a href='https://getfocus.io'>GetFocus.io</a></h1></section>
 			<section data-markdown>
 # Les librairies coeur
 
@@ -144,8 +145,6 @@
 
 ## [Focus Components](https://github.com/KleeGroup/focus-components)
 
-
-## Focus Behaviours
 			</section>
 			<section data-markdown>
 # Les extensions
@@ -153,6 +152,7 @@
 ## [Focus file](https://github.com/KleeGroup/focus-file)
 
 ## [Focus Notification](https://github.com/KleeGroup/focus-notification)
+## [Focus Comments](https://github.com/KleeGroup/focus-comments)
 </section>
 <section data-markdown>
 # Documentation
@@ -177,34 +177,11 @@
 			<section>
 				<section><h1>Le router de l'application</h1></section>
 				<section data-markdown>
-					## [Router](http://backbonejs.org/#Router)
+					## [Router](https://github.com/reactjs/react-router)
 
 					![router](https://s3.amazonaws.com/media-p.slid.es/uploads/52889/images/1647955/router.PNG)
 				</section>
-				<section>
-					<h2>Exemple de router</h2>
-					<pre>
-						<code class='javascript'>
-import {application, router} from 'focus-core';
-import MovieDetailView from '../views/movie/detail';
-
-const MoviesRouter = router.extend({
-    log: true,
-    beforeRoute() {
-        application.changeRoute('movies');
-    },
-    routes: {
-		'movies/:id': 'movieDetail'
-    },
-    movieDetail(id) {
-        this._pageContent(MovieDetailView, {props: {id}});
-    }
-});
-new MoviesRouter();
-						</code>
-					</pre>
-
-				</section>
+				
 			</section>
 			<section>
 				<section><h1>Les domaines et les définitions</h1></section>
@@ -425,16 +402,12 @@ export default React.createClass({
 					</pre>
 				</section>
 			</section>
-			<section>
-				<section><h2>Les composants / fonctions à connaître</h2></section>
-				<section><h2>Les composants de layout</h2></section>
-				<section><h2>storebehaviour</h2></section>
-				<section><h2>definitionBehaviour</h2></section>
-				<section><h2>formMixin</h2></section>
-				<section><h2>Les composants de construction de page</h2></section>
-				<section><h2>fieldBehaviour</h2></section>
-			</section>
 			<section data-markdown>
+	## tutos
+	- [Faire une page de détail](http://kleegroup.github.io/focus-docs/tutorial/detail.html)
+	- [Faire une page de liste](http://kleegroup.github.io/focus-docs/tutorial/list.html)
+	</section>
+	<section data-markdown>
 				## Structure applicative
 
 				- [Focus docs](http://kleegroup.github.io/focus-docs/getting-started/starter-kit.html)
