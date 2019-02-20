@@ -39,6 +39,7 @@
 		}
 		.blackTransparent{
 			background-color: rgba(0, 0, 0, 0.5);
+			padding: 12px !important;
 		}
 	</style>
 </head>
@@ -48,88 +49,93 @@
 	<div class="reveal">
 		<div class="slides">
 
+			<!-- Section générale sur focus -->
 			<section>
-				<section data-background=''>
+				<section>
 					<h1>Focus</h1>
 					<p>
 						<a href='http://get-focus.github.io/formation-focus/#/'>http://get-focus.github.io/formation-focus</a>
 					</p>
 				</section>
+				
 				<section>
 					<h1>Pourquoi Focus?</h1>
 				</section>
+				
 				<section data-background='https://i.ytimg.com/vi/M_WUvsFY9-4/maxresdefault.jpg'>
 					<h2 class='blackTransparent'>Klee fait des applications sur mesure</h2>
 				</section>
+				
 				<section ><h1>Les missions de Focus</h1></section>
+				
 				<section data-background='http://usabilitygeek.com/wp-content/uploads/2011/07/usability-user-experience-difference.jpg'>
 					<h1 class='blackTransparent'>Remettre l'humain au centre UX</h1>
 				</section>
-				<section data-background='http://keithrhiggons.com/wp-content/uploads/2014/09/CHANGES.jpg'>
-					<h1 class='redTransparent'>Capter et digérer l'innovation</h1>
-				</section>
+				
 				<section data-background='https://media.giphy.com/media/W4ZYPB4q4DSbS/giphy.gif'>
 					<h1 class='blackTransparent'>Developer Experience DX</h1>
 				</section>
-				<section>
-					<h2>Les livrables</h2>
-					<ul>
-						<li>Support de communication et d'aide à la vente</li>
-						<li>Les templates de page</li>
-						<li>Libraries JS</li>
-						<li>Showcase de composants</li>
-						<li>Blog d'articles UX / Tech</li>
-						<li>Documentation  technique focus-docs</li>
-						<li>Extensions prêtes à l'emploi (notifs, comments, ...)</li>
-					</ul>
+				
+				<section data-background='http://keithrhiggons.com/wp-content/uploads/2014/09/CHANGES.jpg'>
+					<h1 class='redTransparent'>Capter et digérer l'innovation</h1>
 				</section>
+				
 				<section>
 					<h1>Objectifs</h1>
 				</section>
+				
 				<section>
-					<h2>Faire rapidement et facilement 80 % des écrans de l'application</h2>
+					<h3>Faire rapidement et facilement 80% des écrans de l'application</h3>
 					<ul>
 						<li>Respecter les maquettes</li>
 						<li>Composants UX prêt à l'emploi</li>
 					</ul>
 				</section>
+				
 				<section>
-					<h2>Faire facilement du sur mesure 20 % des écrans de l'application</h2>
+					<h3>Faire facilement du sur mesure 20% des écrans de l'application</h3>
+					<ul>
+						<li>Utilisation de React & Flux</li>
+					</ul>
 				</section>
-				<section data-background='http://www.friteries-sensas.fr/gifs/presse1.jpg'>
-					<h1 class='redTransparent'>Le bureau Focus</h1>
+				
+				<section data-background='https://michaeltheroux.files.wordpress.com/2015/01/matrix.png'>
+					<h1 class='blackTransparent'>Le bureau Focus</h1>
 				</section>
+				
 				<section data-background='http://www.cosatto.com/blog/wp-content/uploads/2011/08/babyshow_smaller.jpg'>
-					<ul class='blackTransparent' style=''>
-						<li data-fragment>Validation de choix avant de se lancer ?</li>
-						<li>Conception de maquettes</li>
+					<ul class='blackTransparent'>
+						<li>Validation de choix avant de se lancer ?</li>
 						<li>Validation des maquettes</li>
 						<li>Conception technique d'écran</li>
 						<li>Pour partager vos bonnes idées</li>
 					</ul>
 				</section>
+				
 				<section data-background='http://www.quizz.biz/uploads/quizz/888745/1_98CBQ.jpg'>
-					<h2 class='redTransparent'>Je n'arrive pas à faire rentrer mon écran dans le pattern</h2>
+					<h2 class='blackTransparent'>Je n'arrive pas à faire rentrer mon écran dans le pattern</h2>
 					<ul></ul>
 				</section>
+				
 				<section data-background='http://regmedia.co.uk/2012/04/02/word_2_doc.png'>
-					<h2 class='redTransparent'>Mon client veut un écran un peu funky</h2>
+					<h2 class='blackTransparent'>Mon client veut un écran un peu funky</h2>
 
 				</section>
+				
 				<section data-background='http://www.xanetiz.com/images/articles/bugs-connus-histoire1.png'>
-					<h2 class='redTransparent'>Je trouve un bug sur Focus</h2>
+					<h2 class='blackTransparent'>Je trouve un bug sur Focus</h2>
 				</section>
+				
 				<section>
 					<h2>Des suggestions ou problèmes:</h2>
 					<ul>
-						<li>focus-bureau@kleegroup.com</li>
-						<li><a href='http://community-focus.slack.com/'>Slack Focus community</a></li>
-						<li>Validation des maquettes</li>
-						<li>Conception technique d'écran</li>
-						<li>Pour partager vos bonnes idées.</li>
+						<li>focus@kleegroup.com</li>
+						<li><a href='http://community-focus.slack.com/'>community-focus #slack</a></li>
 					</ul>
 				</section>
 			</section>
+
+			
 			<section>
 				<section data-background='https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png'>
 <h2 class='blackTransparent'>github</h2>
@@ -459,6 +465,7 @@ export default React.createClass({
 		// - https://github.com/hakimel/reveal.js#configuration
 		// - https://github.com/hakimel/reveal.js#dependencies
 		Reveal.initialize({
+			history: true,
 			dependencies: [
 				{ src: 'plugin/markdown/marked.js' },
 				{ src: 'plugin/markdown/markdown.js' },
