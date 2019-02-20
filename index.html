@@ -178,60 +178,69 @@
 				</section>
 			</section>
 			
+
+			<!-- Section Focus -->
+			<section data-background='https://media.giphy.com/media/Sq4QZyBwagvle/giphy.gif'><h1>Focus2.js</h1></section>
 			
-			<section data-background='https://media.giphy.com/media/Sq4QZyBwagvle/giphy.gif'><h1>Focus.js</h1></section>
-			
-			
+
+			<!-- Section Routing -->
 			<section>
-				<section><h1>Le router de l'application</h1></section>
+				<section>
+					<h1>Le router de l'application</h1>
+				</section>
+				
 				<section data-markdown>
 					## [Router](https://github.com/reactjs/react-router)
 
 					![router](https://cloud.githubusercontent.com/assets/286966/15237848/4daec5de-18d2-11e6-8b77-b5e3387014c9.png)
 
 				</section>
+				
 				<section>
 					<h1>Et voici l'exemple</h1>
-				<section data-markdown>
-```javascript
-import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-import AppLayout from '../components/layout'
-import HomeRoute from './home-route';
-import MasterdataRoutes from './masterdata-routes';
-import MoviesRoutes from './movies-route';
-import PersonsRoutes from './persons-route';
-import SearchRoutes from './advanced-search-route';
-import ErrorRoutes from './error-route';
-
-export default {
-    path: `${__BASE_URL__}`,
-    indexRoute: { onEnter: ({ params }, replace) => replace(`${__BASE_URL__}home`) },
-    component: AppLayout,
-    childRoutes: [...HomeRoute, ...MasterdataRoutes, ...MoviesRoutes, ...PersonsRoutes, ...SearchRoutes, ...ErrorRoutes]
-};
-
-import React from 'react';
-import MovieDetailView from '../views/movie/detail';
-
-const route = [
-    {
-        path: 'movies/:id',
-        component: (props) => (<MovieDetailView id={parseInt(props.params.id)} {...props}/>)
-    }
-];
-
-export default route;
-```
-				</section>
-				</section>
 				
-			
+					<section data-markdown>
+						```javascript
+						import React from 'react';
+						import { Route, IndexRoute } from 'react-router';
+						import AppLayout from '../components/layout'
+						import HomeRoute from './home-route';
+						import MasterdataRoutes from './masterdata-routes';
+						import MoviesRoutes from './movies-route';
+						import PersonsRoutes from './persons-route';
+						import SearchRoutes from './advanced-search-route';
+						import ErrorRoutes from './error-route';
+
+						export default {
+							path: `${__BASE_URL__}`,
+							indexRoute: { onEnter: ({ params }, replace) => replace(`${__BASE_URL__}home`) },
+							component: AppLayout,
+							childRoutes: [...HomeRoute, ...MasterdataRoutes, ...MoviesRoutes, ...PersonsRoutes, ...SearchRoutes, ...ErrorRoutes]
+						};
+
+						import React from 'react';
+						import MovieDetailView from '../views/movie/detail';
+
+						const route = [
+							{
+								path: 'movies/:id',
+								component: (props) => (<MovieDetailView id={parseInt(props.params.id)} {...props}/>)
+							}
+						];
+
+						export default route;
+						```
+					</section>
+				</section>
 			</section>
 			
-			
+
+			<!-- Section domaine & definition -->
 			<section>
-				<section><h1>Les domaines et les définitions</h1></section>
+				<section>
+					<h1>Les domaines et les définitions</h1>
+				</section>
+				
 				<section data-markdown>
 					## les domaines
 
@@ -241,236 +250,251 @@ export default route;
 					- On peut les utiliser pour le style
 					- Utilisation intelligente avec `fieldFor`
 				</section>
+				
 				<section data-markdown>
-## example du domaine do-date.js
+					## example du domaine do-date.js
 
-```javascript
-import moment from 'moment';
-import {Date as DateComponent} from 'focus-components/components/input';
+					```javascript
+					import moment from 'moment';
+					import {Date as DateComponent} from 'focus-components/components/input';
 
-export default {
-    InputComponent: DateComponent,
-    formatter: date => date ? moment(date, moment.ISO_8601).format('DD/MM/YYYY') : '',
-    format: ['DD/MM/YYYY', 'DD-MM-YYYY', 'D MMM YYYY']
-};
-```
+					export default {
+						InputComponent: DateComponent,
+						formatter: date => date ? moment(date, moment.ISO_8601).format('DD/MM/YYYY') : '',
+						format: ['DD/MM/YYYY', 'DD-MM-YYYY', 'D MMM YYYY']
+					};
+					```
 				</section>
+
 				<section data-markdown>
 					## Les définitions
 
-- Générées depuis le modèle de données
-- Lie le modèle de données aux domaines
-- Chaque table a des champs
-- Chaque champ a un domaine
-- Chaque champ porte l'information requis / non requis
+					- Générées depuis le modèle de données
+					- Lie le modèle de données aux domaines
+					- Chaque table a des champs
+					- Chaque champ a un domaine
+					- Chaque champ porte l'information requis / non requis
 				</section>
+
 				<section data-markdown>
-## example de définitions
+					## example de définitions
 
-```javascript
-export const movie = {
-    code: {
-        domain: 'DO_ID',
-        required: true
-    },
-    title: {
-        domain: 'DO_LABEL_LONG',
-        required: true
-    },
-	creationDate: {
-		domain: 'DO_DATE',
-		required: false
-	}
-}
+					```javascript
+					export const movie = {
+						code: {
+							domain: 'DO_ID',
+							required: true
+						},
+						title: {
+							domain: 'DO_LABEL_LONG',
+							required: true
+						},
+						creationDate: {
+							domain: 'DO_DATE',
+							required: false
+						}
+					}
 
-// fieldFor(creationDate)
-```
+					// fieldFor(creationDate)
+					```
 				</section>
-
 			</section>
 			
 			
+			<!-- Section flux-->
 			<section>
-				<section><h1>Flux by Focus</h1></section>
+				<section>
+					<h1>Flux by Focus</h1>
+				</section>
+				
 				<section data-markdown>
 					## flux by Facebook
 
 					![flux](https://facebook.github.io/flux/img/flux-simple-f8-diagram-with-client-action-1300w.png)
 				</section>
+				
 				<section data-markdown>
 					## Architecture
 
-![archi](https://cloud.githubusercontent.com/assets/286966/15237742/4df03ccc-18d1-11e6-9753-97777780453b.png)
-
+					![archi](https://cloud.githubusercontent.com/assets/286966/15237742/4df03ccc-18d1-11e6-9753-97777780453b.png)
 				</section>
+				
 				<section data-markdown>
 					# les stores
 
 					![stores](https://s3.amazonaws.com/media-p.slid.es/uploads/52889/images/1647931/store.PNG)
 				</section>
+				
 				<section data-markdown>
 					# Flux
 
 					![flux1](https://s3.amazonaws.com/media-p.slid.es/uploads/52889/images/1647945/focus-flux1.PNG)
 				</section>
+				
 				<section data-markdown>
 					# flux
 
 					![flux2](https://s3.amazonaws.com/media-p.slid.es/uploads/52889/images/1647946/focus-flux2.PNG)
 				</section>
+				
 				<section data-markdown>
-# Service
+					# Service
 
-- Un service est une fonction
-- Un service appelle une url construite grâce à [urlbuilder](https://github.com/KleeGroup/focus-core/blob/develop/src/list/action-builder.js)
-- Un service retourne une `Promise`
-- On peut utiliser la méthode `fetch` de [focus](https://github.com/KleeGroup/focus-core/blob/develop/src/network/fetch.js)
+					- Un service est une fonction
+					- Un service appelle une url construite grâce à [urlbuilder](https://github.com/KleeGroup/focus-core/blob/develop/src/list/action-builder.js)
+					- Un service retourne une `Promise`
+					- On peut utiliser la méthode `fetch` de [focus](https://github.com/KleeGroup/focus-core/blob/develop/src/network/fetch.js)
 				</section>
+				
 				<section>
 					<h2>Exemple de service (retourne impérativement une Promise)</h2>
 					<pre>
 						<code class='javascript'>
-import fetch from 'focus-core/network/fetch';
-//Fait une reqête ajax
-import movieUrl from '../config/server/movies';
-// Les urls de ws sont configurées
-export default {
-    loadMovie(id) {
-        return fetch(movieUrl.loadMovie({urlData: {id}}));
-    },
-    saveMovieSynopsis(data) {
-        return fetch(movieUrl.saveMovie({urlData: {id: data.id}, data: {data}}));
-    },
-    saveMovieCaracteristics(data) {
-        return fetch(movieUrl.saveMovie({urlData: {id: data.id}, data: {data}}));
-    }
-}
+							import fetch from 'focus-core/network/fetch';
+							//Fait une reqête ajax
+							import movieUrl from '../config/server/movies';
+							// Les urls de ws sont configurées
+							export default {
+								loadMovie(id) {
+									return fetch(movieUrl.loadMovie({urlData: {id}}));
+								},
+								saveMovieSynopsis(data) {
+									return fetch(movieUrl.saveMovie({urlData: {id: data.id}, data: {data}}));
+								},
+								saveMovieCaracteristics(data) {
+									return fetch(movieUrl.saveMovie({urlData: {id: data.id}, data: {data}}));
+								}
+							}
 						</code>
 					</pre>
 				</section>
-				<section data-markdown>
-# store
 
-- Un store est un objet qui contient une grappe de données
-- Associé à une notion de grappe d'objet ([corestore](https://github.com/KleeGroup/focus-core/blob/develop/src/store/CoreStore.js))
-- Il existe des stores spécialisées ([recherche](https://github.com/KleeGroup/focus-core/tree/develop/src/store/search), [liste](https://github.com/KleeGroup/focus-core/tree/develop/src/store/search))
-- Il peut notifier: d'un changement, d'une erreur
-- Chaque noeud de données peut avoir un statut
+				<section data-markdown>
+					# store
+
+					- Un store est un objet qui contient une grappe de données
+					- Associé à une notion de grappe d'objet ([corestore](https://github.com/KleeGroup/focus-core/blob/develop/src/store/CoreStore.js))
+					- Il existe des stores spécialisées ([recherche](https://github.com/KleeGroup/focus-core/tree/develop/src/store/search), [liste](https://github.com/KleeGroup/focus-core/tree/develop/src/store/search))
+					- Il peut notifier: d'un changement, d'une erreur
+					- Chaque noeud de données peut avoir un statut
 				</section>
+				
 				<section>
 					<h2>Exemple de store</h2>
 					<pre>
 						<code class='javascript'>
-import {CoreStore} from 'focus-core/store';
-const movieStore = new CoreStore({
-    definition: {
-        movie: 'movie',
-		actors: 'actors'
-    }
-});
+							import {CoreStore} from 'focus-core/store';
+							const movieStore = new CoreStore({
+								definition: {
+									movie: 'movie',
+									actors: 'actors'
+								}
+							});
 
-export default movieStore;
+							export default movieStore;
 						</code>
 					</pre>
 				</section>
+				
 				<section data-markdown>
-# action
+					# action
 
-- Une action est une fonction
-- Une action doit appeller un service
-- Avec le retour (après l'appel serveur)
-- Dispatch le résultat dans le `dispatcher`
-- On peut utiliser le `actionBuilder` ([detail](https://github.com/KleeGroup/focus-core/blob/develop/src/application/action-builder.js), [recherche](https://github.com/KleeGroup/focus-core/blob/develop/src/search/action-builder.js), [liste](https://github.com/KleeGroup/focus-core/blob/develop/src/list/action-builder.js))
+					- Une action est une fonction
+					- Une action doit appeller un service
+					- Avec le retour (après l'appel serveur)
+					- Dispatch le résultat dans le `dispatcher`
+					- On peut utiliser le `actionBuilder` ([detail](https://github.com/KleeGroup/focus-core/blob/develop/src/application/action-builder.js), [recherche](https://github.com/KleeGroup/focus-core/blob/develop/src/search/action-builder.js), [liste](https://github.com/KleeGroup/focus-core/blob/develop/src/list/action-builder.js))
 				</section>
+				
 				<section>
 					<h2>Exemple d'action</h2>
 					<pre>
 						<code class='javascript'>
-import actionBuilder from 'focus-core/application/action-builder';
-import {loadMovie, saveMovieSynopsis} from '../services/movie';
+							import actionBuilder from 'focus-core/application/action-builder';
+							import {loadMovie, saveMovieSynopsis} from '../services/movie';
 
-export const synopsisActions = {
-    load: actionBuilder({
-        node: 'movie',
-        service: loadMovie,
-        shouldDumpStoreOnActionCall: true,
-        status: 'loaded'
-    }),
-    save: actionBuilder({
-        node: 'movie',
-        service: saveMovieSynopsis,
-        shouldDumpStoreOnActionCall: true,
-        status: 'saved'
-    })
-}
+							export const synopsisActions = {
+								load: actionBuilder({
+									node: 'movie',
+									service: loadMovie,
+									shouldDumpStoreOnActionCall: true,
+									status: 'loaded'
+								}),
+								save: actionBuilder({
+									node: 'movie',
+									service: saveMovieSynopsis,
+									shouldDumpStoreOnActionCall: true,
+									status: 'saved'
+								})
+							}
 						</code>
 					</pre>
 				</section>
+				
 				<section data-background='http://auto.mgl.skyrock.net/art/SHAR.8448.337.2.jpg'>
 					<h2>Un exemple de composant mis en musique</h2>
 					<pre>
 						<code class="javascript">
-//librairies
-import React, {PropTypes} from 'react';
-import FocusComponents from 'focus-components';
+							//librairies
+							import React, {PropTypes} from 'react';
+							import FocusComponents from 'focus-components';
 
-// web components
-import Panel from 'focus-components/components/panel';
-import {mixin as formMixin} from 'focus-components/common/form';
+							// web components
+							import Panel from 'focus-components/components/panel';
+							import {mixin as formMixin} from 'focus-components/common/form';
 
-//stores & actions
-import movieStore from '../../../stores/movie';
-import {caracteristicsActions} from '../../../action/movie';
+							//stores & actions
+							import movieStore from '../../../stores/movie';
+							import {caracteristicsActions} from '../../../action/movie';
 
-export default React.createClass({
-    displayName: 'MovieCaracteristics',
-    propTypes: {
-        id: PropTypes.number
-    },
-    mixins: [formMixin],
-    definitionPath: 'movie',
-    stores: [{store: movieStore, properties: ['movie']}],
-    action: caracteristicsActions,
+							export default React.createClass({
+								displayName: 'MovieCaracteristics',
+								propTypes: {
+									id: PropTypes.number
+								},
+								mixins: [formMixin],
+								definitionPath: 'movie',
+								stores: [{store: movieStore, properties: ['movie']}],
+								action: caracteristicsActions,
 
-    /** @inheritDoc */
-    renderContent() {
-        return (
-            <Panel actions={this._renderActions} title='movie.detail.caracteristics'>
-                {this.fieldFor('title')}
-                {this.fieldFor('originalTitle')}
-                {this.fieldFor('keywords')}
-                {this.fieldFor('runtime')}
-                {this.fieldFor('movieType')}
-                {this.fieldFor('productionYear')}
-                {this.fieldFor('trailerName')}
-                {this.fieldFor('trailerHRef')}
-            </Panel>
-        );
-    }
-});
+								/** @inheritDoc */
+								renderContent() {
+									return (
+										<Panel actions={this._renderActions} title='movie.detail.caracteristics'>
+											{this.fieldFor('title')}
+											{this.fieldFor('originalTitle')}
+											{this.fieldFor('keywords')}
+											{this.fieldFor('runtime')}
+											{this.fieldFor('movieType')}
+											{this.fieldFor('productionYear')}
+											{this.fieldFor('trailerName')}
+											{this.fieldFor('trailerHRef')}
+										</Panel>
+									);
+								}
+							});
 						</code>
 					</pre>
 				</section>
 			</section>
 			
-			
-			<section data-markdown>
-	## tutos
-	- [Faire une page de détail](http://kleegroup.github.io/focus-docs/tutorial/detail.html)
-	- [Faire une page de liste](http://kleegroup.github.io/focus-docs/tutorial/list.html)
-			</section>
-			
-			
-			<section data-markdown>
-						## Structure applicative
 
-						- [Focus docs](http://kleegroup.github.io/focus-docs/getting-started/starter-kit.html)
-						- [Focus demo app](https://github.com/KleeGroup/focus-demo-app)
+			<section data-markdown>
+				## tutos
+				- [Faire une page de détail](http://kleegroup.github.io/focus-docs/tutorial/detail.html)
+				- [Faire une page de liste](http://kleegroup.github.io/focus-docs/tutorial/list.html)
+			</section>		
+			
+
+			<section data-markdown>
+				## Structure applicative
+
+				- [Focus docs](http://kleegroup.github.io/focus-docs/getting-started/starter-kit.html)
+				- [Focus demo app](https://github.com/KleeGroup/focus-demo-app)
 			</section>
 			
-			
+
 			<section data-background='https://mtpmcg.files.wordpress.com/2014/07/thanks-b-fr-mtpmcg714-sm-2163.jpg'></section>
-
 		</div>
 	</div>
 
