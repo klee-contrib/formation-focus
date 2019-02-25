@@ -240,62 +240,66 @@
 					<h1>Les domaines et les définitions</h1>
 				</section>
 				
-				<section data-markdown>
-					## les domaines
-
-					- Responsable de la validation
-					- Du composant de rendu (consultation, édition)
-					- formatage  des données
-					- On peut les utiliser pour le style
-					- Utilisation intelligente avec `fieldFor`
+				<section>
+					<h2>les domaines</h2>
+					<ul>
+						<li>Responsable de la validation</li>
+						<li>Du composant de rendu (consultation, édition)</li>
+						<li>formatage  des données</li>
+						<li>On peut les utiliser pour le style</li>
+						<li>Utilisation intelligente avec `fieldFor`</li>
+					</ul>
 				</section>
 				
-				<section data-markdown>
-					## example du domaine do-date.js
+				<section>
+					<h2>example du domaine do-date.js</h2>
+					<section data-markdown>
+						```javascript
+						import moment from 'moment';
+						import {Date as DateComponent} from 'focus-components/components/input';
 
-					```javascript
-					import moment from 'moment';
-					import {Date as DateComponent} from 'focus-components/components/input';
-
-					export default {
-						InputComponent: DateComponent,
-						formatter: date => date ? moment(date, moment.ISO_8601).format('DD/MM/YYYY') : '',
-						format: ['DD/MM/YYYY', 'DD-MM-YYYY', 'D MMM YYYY']
-					};
-					```
+						export default {
+							InputComponent: DateComponent,
+							formatter: date => date ? moment(date, moment.ISO_8601).format('DD/MM/YYYY') : '',
+							format: ['DD/MM/YYYY', 'DD-MM-YYYY', 'D MMM YYYY']
+						};
+						```
+					</section>
 				</section>
 
-				<section data-markdown>
-					## Les définitions
-
-					- Générées depuis le modèle de données
-					- Lie le modèle de données aux domaines
-					- Chaque table a des champs
-					- Chaque champ a un domaine
-					- Chaque champ porte l'information requis / non requis
+				<section>
+					<h2>Les définitions</h2>
+					<ul>
+						<li>Générées depuis le modèle de données</li>
+						<li>Lie le modèle de données aux domaines</li>
+						<li>Chaque table a des champs</li>
+						<li>Chaque champ a un domaine</li>
+						<li>Chaque champ porte l'information requis / non requis</li>
+					</ul>
 				</section>
 
-				<section data-markdown>
-					## example de définitions
-
-					```javascript
-					export const movie = {
-						code: {
-							domain: 'DO_ID',
-							required: true
-						},
-						title: {
-							domain: 'DO_LABEL_LONG',
-							required: true
-						},
-						creationDate: {
-							domain: 'DO_DATE',
-							required: false
+				<section>
+					<h2>example de définitions</h2>
+					<section data-markdown>
+						```javascript
+						export const movie = {
+							code: {
+								domain: 'DO_ID',
+								required: true
+							},
+							title: {
+								domain: 'DO_LABEL_LONG',
+								required: true
+							},
+							creationDate: {
+								domain: 'DO_DATE',
+								required: false
+							}
 						}
-					}
-
-					// fieldFor(creationDate)
-					```
+	
+						// fieldFor(creationDate)
+						```
+					</section>
 				</section>
 			</section>
 			
