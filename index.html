@@ -410,97 +410,223 @@
 				</section>
 
 				<section>
-					<h2>Service</h2>
+					<h2>Dossiers d'une app Focus2</h2>
 					<ul>
-						<li>Un service est une fonction</li>
-						<li>
-							Un service appelle une url construite grâce à 
-							<a href="https://github.com/KleeGroup/focus-core/blob/develop/src/list/action-builder.js">urlbuilder</a>
-						</li>
-						<li>Un service retourne une <u>Promise</u></li>
-						<li>
-							On peut utiliser la méthode <u>fetch</u> de 
-							<a href="https://github.com/KleeGroup/focus-core/blob/develop/src/network/fetch.js">focus</a>
-						</li>
+						<li><b>actions/</b> : toutes les actions organisées par module</li>
+						<li><b>components/</b> : tous les composants communs à plusieurs modules.</li>
+						<li><b>config/</b> : la configuration de l'application, domaine, entity, etc.</li>
+						<li><b>i18n/</b> : les fichiers de traductions organisés par module</li>
+						<li><b>initializer/</b> : le boot de l'application</li>
+						<li><b>routes/</b> : les routes organisés par modules</li>
+						<li><b>services/</b> : les services organisés par modules</li>
+						<li><b>stores/</b> : les stores organisés par modules</li>
+						<li><b>styles/</b> : les feuilles de style commune à plusieurs modules</li>
+						<li><b>views/</b> : les pages, popins et dialogs organisés par module</li>
+						<li><b>application.jsx</b> : l'initialization de la vue principale de l'appli</li>
+						<li><b>index.js</b> : l'orchestrateur de l'appli</li>
 					</ul>
+				</section>
+			</section>
+			
+			<!-- Helpers focus : mixins &co -->
+			<section>
+				<section>
+					<h2>Flux with Focus</h2>
+					<br />
+					<table>
+						<tbody>
+							<tr>
+								<td>Rappel, focus c'est :</td>
+								<td><b>80%</b> générique</td>
+								<td><b>20%</b> spécifique</td>
+							</tr>
+						</tbody>
+					</table>
+					<p>Il y a des helpers pour <b>tout</b> (ou presque...)</p>
+				</section>
+
+				<section data-markdown>
+					## Actions avec __actionBuilder__
+					
+					L'action builder est là pour simplifier la mise à jour d'un store à partir du résultat d'un appel au serveur via un service
+					
+					```javascript
+					import actionBuilder from "focus-core/application/action-builder";
+					import basketServices from "../services";
+
+					export const basketActions = {
+						// Action qui sera disponible
+						addToBasket: actionBuilder({
+							// Service qui sera appelé
+							service: basketServices.addToBasket,
+							// Noeud du store qui est update
+							node: "basket",
+							// Statut à la fin de l'action
+							status: "updated"
+						})
+					};
+
+					// => on pourra faire basketActions.addToBasket(productId)
+					```
 				</section>
 
 				<section>
-					<h2>store</h2>
-					<ul>
-						<li>Un store est un objet qui contient une grappe de données</li>
-						<li>
-							Associé à une notion de grappe d'objet
-							(<a href="https://github.com/KleeGroup/focus-core/blob/develop/src/store/CoreStore.js">corestore</a>)
-						</li>
-						<li>
-							Il existe des stores spécialisées 
-							(<a href="https://github.com/KleeGroup/focus-core/tree/develop/src/store/search">recherche</a>,
-							<a href="https://github.com/KleeGroup/focus-core/tree/develop/src/store/search">liste</a>)
-						</li>
-						<li>Il peut notifier: d'un changement, d'une erreur</li>
-						<li>Chaque noeud de données peut avoir un statut</li>
-					</ul>
-				</section>
-				
-				<section>
-					<h2>Exemple de store</h2>
-					<section data-markdown>
-						```javascript
-						import {CoreStore} from 'focus-core/store';
-						const movieStore = new CoreStore({
-							definition: {
-								movie: 'movie',
-								actors: 'actors'
-							}
-						});
-
-						export default movieStore;
-						```
+						<h2>Actions - TL;DR</h2>
+						<ul>
+							<li>Une action est une fonction</li>
+							<li>Une action peut appeller un service</li>
+							<li>Peut dispatch au dispatcher: avant, pendant, après l'appel au service</li>
+							<li>
+								On peut utiliser un actionBuilder, il en existe plusieurs :
+								<ul>
+									<li>
+										<a href="https://github.com/KleeGroup/focus-core/blob/master/src/application/action-builder.js">simple</a>
+										fonctionne avec un coreStore
+									</li>
+									<li>
+										<a href="https://github.com/KleeGroup/focus-core/blob/master/src/search/action-builder.js">recherche</a>
+										fonctionne avec un searchStore
+									</li>
+									<li>
+										<a href="https://github.com/KleeGroup/focus-core/blob/master/src/list/action-builder.js">liste</a>
+										fonctionne avec un listStore
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</section>
+					
+				<section data-markdown>
+					## Stores avec __CoreStore__
+
+					[CoreStore](https://github.com/KleeGroup/focus-core/tree/master/src/store) 
+					est là pour aider à la création de stores multi-noeuds qui seront mis à jour avec un actionBuilder
+
+					Chaque noeud aura aura un status et un état de loading (true ou false)
+
+					```javascript
+					import CoreStore from "focus-core/store/CoreStore";
+
+					export const basketStore = new CoreStore({
+						basket
+					});
+
+					// => bastketStore aura un noeud nommé "basket"
+					```
 				</section>
-				
+
 				<section>
-					<h2>action</h2>
+					<h2>Stores - TL;DR</h2>
 					<ul>
-						<li>Une action est une fonction</li>
-						<li>Une action doit appeller un service</li>
-						<li>Avec le retour (après l'appel serveur)</li>
-						<li>Dispatch le résultat dans le <u>dispatcher</u></li>
 						<li>
-							On peut utiliser le <u>actionBuilder</u>
-							(<a href="https://github.com/KleeGroup/focus-core/blob/develop/src/application/action-builder.js">detail</a>,
-							<a href="https://github.com/KleeGroup/focus-core/blob/develop/src/search/action-builder.js">recherche</a>,
-							<a href="https://github.com/KleeGroup/focus-core/blob/develop/src/list/action-builder.js">liste</a>)
+							Un store est un objet qui contient une grappe de données
+							<ul>
+								<li>
+									Store simple :
+									<a href="https://github.com/KleeGroup/focus-core/blob/develop/src/store/CoreStore.js">CoresSore</a>
+								</li>
+								<li>
+									Stores spécialisés :
+									<a href="https://github.com/KleeGroup/focus-core/tree/master/src/store/list/index.js">ListStore</a>,
+									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/store/search/advanced-search/index.js">AdvancedSearchStore</a>,
+									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/store/search/quick-search/index.js">QuickSearchStore</a>
+								</li>
+							</ul>
 						</li>
+						<li>Un store notifie: d'un changement d'état, d'une erreur</li>
+						<li>Chaque noeud de données a un statut et un état de chargement</li>
 					</ul>
 				</section>
-				
-				<section>
-					<h2>Exemple d'action</h2>
-					<section data-markdown>
-						```javascript
-						import actionBuilder from 'focus-core/application/action-builder';
-						import {loadMovie, saveMovieSynopsis} from '../services/movie';
 
-						export const synopsisActions = {
-							load: actionBuilder({
-								node: 'movie',
-								service: loadMovie,
-								shouldDumpStoreOnActionCall: true,
-								status: 'loaded'
-							}),
-							save: actionBuilder({
-								node: 'movie',
-								service: saveMovieSynopsis,
-								shouldDumpStoreOnActionCall: true,
-								status: 'saved'
-							})
+				<section data-markdown>
+					## Une view avec __store mixin__
+
+					Le [store mixin](https://github.com/KleeGroup/focus-components/blob/master/src/mixin/store-behaviour.js) 
+					va écouter le store et mettre à jour le state avec la valeur du/des noeud(s)
+
+					```javascript
+					import { React } from "react";
+					import { storeBehaviour } from "focus-components/mixin";
+					import { basketStore } from "../stores";
+
+					export const Basket = React.createClass({
+						// Utilisation du store mixin
+						mixins: [storeBehaviour],
+						// Ecoute du noeud "basket" du basketStore
+						stores: [
+							{ store: basketStore, properties: ["basket"] }
+						],
+						render() {
+							&lt;div class="basket"&gt;
+								{`${this.state.products.length} products`} 
+							&lt;/div&gt;
 						}
-						```
-					</section>
+					})
+
+					```
+				</section>
+				
+				<section data-markdown>
+					## Une view avec __store connector__
+
+					Le [store connector](https://github.com/KleeGroup/focus-components/blob/master/src/behaviours/store/connect.js) 
+					va écouter le store et recalculer les props à donner au composant connecté
+					
+					```javascript
+					import { React } from "react";
+					import storeConnector from "focus-components/behaviours/store/connect";
+					import { basketStore } from "../stores";
+
+					const connector = storeConnector(
+						{ store: basketStore, properties: ["basket"] },
+						// Fonction de calcul des props du composant connecté
+						props => ({
+							...props, // On transferts les props données par le parent
+							// On pourrait appliquer n'importe quelle transformation
+							basket: basketStore.getBasket()
+						})
+					);
+					export const Basket = connector(props => (
+						&lt;div class="basket"&gt;
+							{`${props.basket.products.length} products`} 
+						&lt;/div&gt;
+					));
+					```
 				</section>
 
+				<section>
+					<table>
+						<colgroup>
+							<col width="55%" />
+							<col width="45%" />
+						</colgroup>
+						<thead>
+							<tr>
+								<th><h3>Store Mixin</h3></th>
+								<th><h3>Store Connector</h3></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Applati tous les noeuds écoutés dans le state</td>
+								<td>Chaque noeud est reçu en props</td>
+							</tr>
+							<tr>
+								<td>Si il y a des conflits de propriétés entre deux noeuds, la dernière va écraser</td>
+								<td>Les noeuds restant séparés, pas de risques de conflits</td>
+							</tr>
+							<tr>
+								<td>Si une clé disparait entre deux updates on va garder l'ancienne valeur dans le state</td>
+								<td>Pas de problèmes 'bro</td>
+							</tr>
+							<tr>
+								<td>Pratique pour un formulaire</td>
+								<td>Pas pratique pour un formulaire</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+<!-- 				
 				<section data-background='http://auto.mgl.skyrock.net/art/SHAR.8448.337.2.jpg'>
 					<h2>Un exemple de composant mis en musique</h2>
 					<section data-markdown>
@@ -545,7 +671,7 @@
 						});
 						```
 					</section>
-				</section>
+				</section> -->
 			</section>
 
 			<!-- Section Routing -->
