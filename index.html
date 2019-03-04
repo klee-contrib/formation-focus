@@ -428,7 +428,7 @@
 				</section>
 			</section>
 			
-			<!-- Helpers focus : mixins &co -->
+			<!-- Flux by focus -->
 			<section>
 				<section>
 					<h2>Flux with Focus</h2>
@@ -681,45 +681,46 @@
 				</section>
 				
 				<section>
-					<h2><a href="https://github.com/reactjs/react-router">Router</a></h2>
-					<img src="https://cloud.githubusercontent.com/assets/286966/15237848/4daec5de-18d2-11e6-8b77-b5e3387014c9.png" alt="router">
+					<h2>React Router</h2>
+					<p>
+						<a href="https://github.com/ReactTraining/react-router"> React Router</a>
+						est une librairie qui affiche vos composants en fonction de l'URL de votre navigateur. 
+						En gros, c'est indispensable si vous voulez faire une SPA et que vous voulez que l'utilisateur puisse 
+						croire que c'est un site normal qu'il peut partager, bookmarker, etc.
+					</p>
 				</section>
 				
+				<section data-markdown>
+					## React Router - Exemple
+					
+					```javascript
+					import React from "react";
+					import { Router, browserHistory } from "react-router";
+					import { AppLayout } from "../components";
+					import { ProductDetailPage } from "../views/products/detail";
+
+					const productRoutes = [{
+						path: 'products/:id',
+						component: props => (&lt;ProductDetailPage id={parseInt(props.params.id)} {...props}/&gt;)
+					}];
+					const routes = {
+						path: `${__BASE_URL__}`,
+						indexRoute: { onEnter: ({ params }, replace) => replace(`${__BASE_URL__}home`) },
+						component: AppLayout,
+						childRoutes: [...productRoutes, ...errorRoutes]
+					};
+					export const Application = () => {
+						&lt;Router history={browserHistory} routes={routes} /&gt;
+					}
+					```
+				</section>
+
 				<section>
-					<h2>Et voici l'exemple</h2>
-				
-					<section data-markdown>
-						```javascript
-						import React from 'react';
-						import { Route, IndexRoute } from 'react-router';
-						import AppLayout from '../components/layout'
-						import HomeRoute from './home-route';
-						import MasterdataRoutes from './masterdata-routes';
-						import MoviesRoutes from './movies-route';
-						import PersonsRoutes from './persons-route';
-						import SearchRoutes from './advanced-search-route';
-						import ErrorRoutes from './error-route';
-
-						export default {
-							path: `${__BASE_URL__}`,
-							indexRoute: { onEnter: ({ params }, replace) => replace(`${__BASE_URL__}home`) },
-							component: AppLayout,
-							childRoutes: [...HomeRoute, ...MasterdataRoutes, ...MoviesRoutes, ...PersonsRoutes, ...SearchRoutes, ...ErrorRoutes]
-						};
-
-						import React from 'react';
-						import MovieDetailView from '../views/movie/detail';
-
-						const route = [
-							{
-								path: 'movies/:id',
-								component: (props) => (&lt;MovieDetailView id={parseInt(props.params.id)} {...props}/&gt;)
-							}
-						];
-
-						export default route;
-						```
-					</section>
+					<h2>Ancien Router (backbone.js)</h2>
+					<p>
+						Plusieurs projets tournent encore avec un ancien router basé sur backbone.js. 
+						Pour ceux là vous verrez au cas avec vos collègues.
+					</p>
 				</section>
 			</section>
 
