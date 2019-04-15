@@ -202,6 +202,15 @@
 						ont dû repenser la structure des composants les plus cruciaux.
 					</p>
 				</section>
+				
+				<section data-background-image="./images/twitter.gif" data-background-size="contain" data-background-color="black">
+					<h2 class="blackTransparent">Bug photos twitter (8ans+)</h2>
+				</section>
+				
+				<section>
+					<h2>En image</h2>
+					<img src="./images/flux_concepts.png" alt="flux">
+				</section>
 
 				<section>
 					<h2>4 concepts</h2>
@@ -214,16 +223,28 @@
 				</section>
 
 				<section>
-					<h2>En image</h2>
-					<img src="./images/flux_concepts.png" alt="flux">
+					<h2>Flux - Phase d'enregistrement</h2>
+					<img src="./images/focus-flux1.PNG" alt="flux1">
+				</section>
+	
+				<section>
+					<h2>flux - Phase de dispatch</h2>
+					<img src="./images/focus-flux2.PNG" alt="flux2">
+				</section>
+		
+				<section>
+					<h2>Les 4 concepts en détail</h2>
+					<p>
+						Ici nous allons voir en détail les <b>4 concepts</b>  avec <u>et</u> sans les <b>helpers</b> de focus.
+					</p>
 				</section>
 
-				<section data-background="./images/twitter.gif">
-					<h2 class="blackTransparent">Synchronisation des photos</h2>
+				<section>
+					<h2>Actions</h2>
 				</section>
 
 				<section data-markdown>
-					## Action - Simple
+					## Action - Simple (action interne)
 					
 					On définit une action avec un __action creator__
 					
@@ -248,7 +269,7 @@
 				</section>
 
 				<section data-markdown>
-					## Action - Complexe
+					## Action - Complexe (appel server)
 					
 					Ici l'action va appeler une API sur le backend et dispatch le résultat
 					
@@ -275,50 +296,58 @@
 				</section>
 
 				<section data-markdown>
-					## Service
+					## Actions avec __actionBuilder__
+					
+					L'action builder est là pour simplifier la mise à jour d'un store à partir du résultat d'un appel au serveur via un service
 					
 					```javascript
-					import basketApis from '../apis';
-					
-					// Basket service
-					export basketService {
-						orderBasket() {
-							return basketApis.oderBasket();
-						},
-						addToBacket(productId) {
-							return basketApis.addToBasket({}, { productId })
-						}
-						// Api méthode signature : (urlParams, bodyParam, options)
-					}
-					```
+					import actionBuilder from "focus-core/application/action-builder";
+					import basketServices from "../services";
 
-					- 80% sont un passe plat vers une API
-					- 20% peuvent réaliser des actions complexes
+					export const basketActions = {
+						// Action qui sera disponible
+						addToBasket: actionBuilder({
+							// Service qui sera appelé
+							service: basketServices.addToBasket,
+							// Noeud du store qui est update
+							node: "basket",
+							// Statut à la fin de l'action
+							status: "updated"
+						})
+					};
+
+					// => on pourra faire basketActions.addToBasket(productId)
+					```
 				</section>
-	
-				<section data-markdown>
-					## View - dispatch d'une action
-					
-					On émet une action lors d'une action utilisateur
-					
-					```javascript
-					import { React } from "react";
-					import { basketActions } from "../actions";
-					import { Button } from "../components";
 
-					export const Product = ({ productId }) => (
-						&lt;div class="product"&gt;
-							{/* Component stuff */}
-							&lt;button&gt;
-								{/* Appel de l'action creator */}
-								onClick={() => basketActions.addToBasket(productId)}
-								label="Ajouter au panier"
-							&lt;/button&gt;
-						&lt;/div&gt;
-					);
-					```
-					
-					A chaque clic sur le bouton, l'action ADD_TO_BASKET est passée au dispatcher
+				<section>
+					<h2>Actions - TL;DR</h2>
+					<ul>
+						<li>Une action est une fonction</li>
+						<li>Une action peut appeller un service</li>
+						<li>Peut dispatch au dispatcher: avant, pendant, après l'appel au service</li>
+						<li>
+							On peut utiliser un actionBuilder, il en existe plusieurs :
+							<ul>
+								<li>
+									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/application/action-builder.js">simple</a>
+									fonctionne avec un coreStore
+								</li>
+								<li>
+									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/search/action-builder.js">recherche</a>
+									fonctionne avec un searchStore
+								</li>
+								<li>
+									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/list/action-builder.js">liste</a>
+									fonctionne avec un listStore
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Stores</h2>
 				</section>
 
 				<section data-markdown>
@@ -348,152 +377,7 @@
 					appDispatcher.register(basketStore.dispatcherCallback);
 					```
 				</section>
-
-				<section data-markdown>
-					## View - Ecoute d'un store
-					```javascript
-					import { React } from "react";
-					import { basketStore } from "../stores";
-
-					export const Basket = React.createClass({
-						// State initial du composant
-						getInitialState() { return { products: basketStore.products }; },
-						// Fonction appellée au changement de données dans le store
-						_onStoreChange() { this.setState({ products: basketStore.products }); },
-						// Le composant s'enregistre auprès du store pour recevoir les modifications
-						componentDidMount() { basketStore.addChangeListner(this._onStoreChange); },
-						// Le composant annule sa souscription auprès du store
-						componentWilltUnmount() { basketStore.removeChangeListener(this._onStoreChange); },
-						render() {
-							&lt;div class="basket"&gt;
-								{`${this.state.products.length} products`} 
-							&lt;/div&gt;
-						}
-					});
-					```
-				</section>
-				
-				<section>
-					<h2>Flux - Phase d'enregistrement</h2>
-					<img src="./images/focus-flux1.PNG" alt="flux1">
-				</section>
 	
-				<section>
-					<h2>flux - Phase de dispatch</h2>
-					<img src="./images/focus-flux2.PNG" alt="flux2">
-				</section>
-	
-				<section>
-					<h2>TL;DR</h2>
-					<ul>
-						<li>L'architecture est unidirectionnelle</li>
-						<li>On raisonne en actions, qui sont déclendhées par la vue ou le serveur</li>
-						<li>Toutes les actions passent par le dispatcher</li>
-						<li>Seuls les stores signalent aux vues qu'il faut se mettre à jour</li>
-					</ul>
-				</section>
-			</section>
-
-
-			<!-- Section Focus -->
-			<section data-background='https://media.giphy.com/media/Sq4QZyBwagvle/giphy.gif'><h2>Focus2.js</h2></section>
-
-
-			<!-- Architecture d'application -->
-			<section>
-
-				<section>
-					<h2>Architecture d'une app Focus2</h2>
-					<img src="./images/archi.png" alt="archi">
-				</section>
-
-				<section>
-					<h2>Dossiers d'une app Focus2</h2>
-					<ul>
-						<li><b>actions/</b> : toutes les actions organisées par module</li>
-						<li><b>components/</b> : tous les composants communs à plusieurs modules.</li>
-						<li><b>config/</b> : la configuration de l'application, domaine, entity, etc.</li>
-						<li><b>i18n/</b> : les fichiers de traductions organisés par module</li>
-						<li><b>initializer/</b> : le boot de l'application</li>
-						<li><b>routes/</b> : les routes organisés par modules</li>
-						<li><b>services/</b> : les services organisés par modules</li>
-						<li><b>stores/</b> : les stores organisés par modules</li>
-						<li><b>styles/</b> : les feuilles de style commune à plusieurs modules</li>
-						<li><b>views/</b> : les pages, popins et dialogs organisés par module</li>
-						<li><b>application.jsx</b> : l'initialization de la vue principale de l'appli</li>
-						<li><b>index.js</b> : l'orchestrateur de l'appli</li>
-					</ul>
-				</section>
-			</section>
-			
-			<!-- Flux by focus -->
-			<section>
-				<section>
-					<h2>Flux with Focus</h2>
-					<br />
-					<table>
-						<tbody>
-							<tr>
-								<td>Rappel, focus c'est :</td>
-								<td><b>80%</b> générique</td>
-								<td><b>20%</b> spécifique</td>
-							</tr>
-						</tbody>
-					</table>
-					<p>Il y a des helpers pour <b>tout</b> (ou presque...)</p>
-				</section>
-
-				<section data-markdown>
-					## Actions avec __actionBuilder__
-					
-					L'action builder est là pour simplifier la mise à jour d'un store à partir du résultat d'un appel au serveur via un service
-					
-					```javascript
-					import actionBuilder from "focus-core/application/action-builder";
-					import basketServices from "../services";
-
-					export const basketActions = {
-						// Action qui sera disponible
-						addToBasket: actionBuilder({
-							// Service qui sera appelé
-							service: basketServices.addToBasket,
-							// Noeud du store qui est update
-							node: "basket",
-							// Statut à la fin de l'action
-							status: "updated"
-						})
-					};
-
-					// => on pourra faire basketActions.addToBasket(productId)
-					```
-				</section>
-
-				<section>
-						<h2>Actions - TL;DR</h2>
-						<ul>
-							<li>Une action est une fonction</li>
-							<li>Une action peut appeller un service</li>
-							<li>Peut dispatch au dispatcher: avant, pendant, après l'appel au service</li>
-							<li>
-								On peut utiliser un actionBuilder, il en existe plusieurs :
-								<ul>
-									<li>
-										<a href="https://github.com/KleeGroup/focus-core/blob/master/src/application/action-builder.js">simple</a>
-										fonctionne avec un coreStore
-									</li>
-									<li>
-										<a href="https://github.com/KleeGroup/focus-core/blob/master/src/search/action-builder.js">recherche</a>
-										fonctionne avec un searchStore
-									</li>
-									<li>
-										<a href="https://github.com/KleeGroup/focus-core/blob/master/src/list/action-builder.js">liste</a>
-										fonctionne avec un listStore
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</section>
-					
 				<section data-markdown>
 					## Stores avec __CoreStore__
 
@@ -535,7 +419,86 @@
 						<li>Chaque noeud de données a un statut et un état de chargement</li>
 					</ul>
 				</section>
+	
+				<section>
+					<h2>Services</h2>
+				</section>
 
+				<section data-markdown>
+					## Service
+					
+					```javascript
+					import basketApis from '../apis';
+					
+					// Basket service
+					export basketService {
+						orderBasket() {
+							return basketApis.oderBasket();
+						},
+						addToBacket(productId) {
+							return basketApis.addToBasket({}, { productId })
+						}
+						// Api méthode signature : (urlParams, bodyParam, options)
+					}
+					```
+
+					- 80% sont un passe plat vers une API
+					- 20% peuvent réaliser des actions complexes
+				</section>
+
+				<section>
+					<h2>Views</h2>
+				</section>
+	
+				<section data-markdown>
+					## View - dispatch d'une action
+					
+					On émet une action lors d'une action utilisateur
+					
+					```javascript
+					import { React } from "react";
+					import { basketActions } from "../actions";
+					import { Button } from "../components";
+
+					export const Product = ({ productId }) => (
+						&lt;div class="product"&gt;
+							{/* Component stuff */}
+							&lt;button&gt;
+								{/* Appel de l'action creator */}
+								onClick={() => basketActions.addToBasket(productId)}
+								label="Ajouter au panier"
+							&lt;/button&gt;
+						&lt;/div&gt;
+					);
+					```
+					
+					A chaque clic sur le bouton, l'action ADD_TO_BASKET est passée au dispatcher
+				</section>
+
+				<section data-markdown>
+					## View - Ecoute d'un store
+					```javascript
+					import { React } from "react";
+					import { basketStore } from "../stores";
+
+					export const Basket = React.createClass({
+						// State initial du composant
+						getInitialState() { return { products: basketStore.products }; },
+						// Fonction appellée au changement de données dans le store
+						_onStoreChange() { this.setState({ products: basketStore.products }); },
+						// Le composant s'enregistre auprès du store pour recevoir les modifications
+						componentDidMount() { basketStore.addChangeListner(this._onStoreChange); },
+						// Le composant annule sa souscription auprès du store
+						componentWilltUnmount() { basketStore.removeChangeListener(this._onStoreChange); },
+						render() {
+							&lt;div class="basket"&gt;
+								{`${this.state.products.length} products`} 
+							&lt;/div&gt;
+						}
+					});
+					```
+				</section>
+				
 				<section data-markdown>
 					## Une view avec __store mixin__
 
@@ -624,8 +587,194 @@
 						</tbody>
 					</table>
 				</section>
+
+				<section>
+					<h2>Flux TL;DR</h2>
+					<ul>
+						<li>L'architecture est unidirectionnelle</li>
+						<li>On raisonne en actions, qui sont déclendhées par la vue ou le serveur</li>
+						<li>Toutes les actions passent par le dispatcher</li>
+						<li>Seuls les stores signalent aux vues qu'il faut se mettre à jour</li>
+					</ul>
+				</section>
 			</section>
 
+
+			<!-- Section Focus -->
+			<section data-background='https://media.giphy.com/media/Sq4QZyBwagvle/giphy.gif'><h2>Focus2.js</h2></section>
+
+
+			<!-- Architecture d'application -->
+			<section>
+
+				<section>
+					<h2>Architecture d'une app Focus2</h2>
+					<img src="./images/archi.png" alt="archi">
+				</section>
+
+				<section>
+					<h2>Dossiers d'une app Focus2</h2>
+					<ul>
+						<li><b>actions/</b> : toutes les actions organisées par module</li>
+						<li><b>components/</b> : tous les composants communs à plusieurs modules.</li>
+						<li><b>config/</b> : la configuration de l'application, domaine, entity, etc.</li>
+						<li><b>i18n/</b> : les fichiers de traductions organisés par module</li>
+						<li><b>initializer/</b> : le boot de l'application</li>
+						<li><b>routes/</b> : les routes organisés par modules</li>
+						<li><b>services/</b> : les services organisés par modules</li>
+						<li><b>stores/</b> : les stores organisés par modules</li>
+						<li><b>styles/</b> : les feuilles de style commune à plusieurs modules</li>
+						<li><b>views/</b> : les pages, popins et dialogs organisés par module</li>
+						<li><b>application.jsx</b> : l'initialization de la vue principale de l'appli</li>
+						<li><b>index.js</b> : l'orchestrateur de l'appli</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Flux with Focus</h2>
+					<br />
+					<table>
+						<tbody>
+							<tr>
+								<td>Rappel, focus c'est :</td>
+								<td><b>80%</b> générique</td>
+								<td><b>20%</b> spécifique</td>
+							</tr>
+						</tbody>
+					</table>
+					<p>Il y a des helpers pour <b>tout</b> (ou presque...)</p>
+				</section>
+			</section>
+			
+			<!-- Section domaine & definition -->
+			<section>
+					<section>
+						<h2>Les domaines et les définitions</h2>
+					</section>
+					
+					<section>
+						<h2>les domaines</h2>
+						<ul>
+							<li>Responsables de la validation</li>
+							<li>Du composant de rendu (consultation et/ou édition)</li>
+							<li>Formatage  des données</li>
+							<li>On peut les utiliser pour le style</li>
+							<li>Utilisation intelligente avec <b>fieldFor</b></li>
+						</ul>
+					</section>
+					
+					<section>
+						<h2>example du domaine do-date.js</h2>
+						<section data-markdown>
+							```javascript
+							import moment from "moment";
+							import InputDate from "focus-components/components/input/date";
+	
+							export default {
+								// Composant utiliser en édition
+								InputComponent: DateComponent,
+								// Formatteur de données pour de la consultation
+								formatter: date => date ? moment(date, moment.ISO_8601).format('DD/MM/YYYY') : "",
+								// Formats autorisés de saisie => validation
+								format: ['DD/MM/YYYY', 'DD-MM-YYYY', 'D MMM YYYY']
+							};
+							```
+						</section>
+					</section>
+	
+					<section>
+						<h2>Les définitions</h2>
+						<ul>
+							<li>Générées depuis le modèle de données</li>
+							<li>Lie le modèle de données aux domaines</li>
+							<li>Chaque objet a des champs</li>
+							<li>Chaque champ a un domaine</li>
+							<li>Chaque champ porte l'information requis / non requis</li>
+						</ul>
+					</section>
+	
+					<section>
+						<h2>example de définitions</h2>
+						<section data-markdown>
+							```javascript
+							export const product = {
+								code: {
+									domain: 'DO_ID',
+									required: true
+								},
+								title: {
+									domain: 'DO_LABEL_LONG',
+									required: true
+								},
+								creationDate: {
+									domain: 'DO_DATE',
+									required: false
+								}
+							}
+							```
+						</section>
+					</section>
+				</section>
+	
+				<!-- Form mixin -->
+				<section>
+					<section>
+						<h2>Le form mixin</h2>
+						<p>Votre <del><b>pire</b></del> meilleur amis</p>
+					</section>
+	
+					<section>
+						<h2>Le form mixin</h2>
+						<ul>
+							<li>Simplification de la gestion de formulaire</li>
+							<li>Formulaire simples ou complexes (ex: sous-listes)</li>
+							<li>Liaisons de champs entre eux</li>
+							<li>Validation automatique avec le domaine ou custom</li>
+							<li>Personnalisation</li>
+						</ul>
+					</section>
+	
+					<section data-markdown>
+						## Un exemple de composant mis en musique
+						
+						```javascript
+						import React from "react";
+						import Panel from "focus-components/components/panel";
+						import { mixin as formMixin } from "focus-components/common/form";
+						import { productStore } from "../stores";
+						import { productionActions } from "../actions";
+	
+						export const ProductDetailPage = React.createClass({
+							propTypes: { id: PropTypes.number.isRequired },
+							// Le mixin
+							mixins: [formMixin],
+							// Ici on donne le path de la definition pour trouver le domaine
+							definitionPath: "product",
+							// Le store qui contient le noeud utilisé par le formulaire
+							stores: [{store: productStore, properties: ["productDetail"]}],
+							// Les actions : doivent s"appeller load & save
+							action: {
+								load: productActions.loadProductDetail,
+								save: productActions.saveProductDetail
+							},
+							// Ici avoir le formixin oblige a passer par renderContent()
+							renderContent() {
+								return (
+									// Le panel est capable de recevoir les boutons edit/save/cancel
+									&lt;Panel actions={this._renderActions} title="products.detail.title"&gt;
+										// Affichage des différents champs en consultation ou en édition
+										{this.fieldFor("title")}
+										{this.fieldFor("price")}
+										{this.fieldFor("rate")}
+										{this.fieldFor("description")}
+									&lt;/Panel&gt;
+								);
+							}
+						});
+						```
+					</section>
+				</section>
+				
 			<!-- Section Routing -->
 			<section>
 				<section>
@@ -677,135 +826,6 @@
 			</section>
 
 
-			<!-- Section domaine & definition -->
-			<section>
-				<section>
-					<h2>Les domaines et les définitions</h2>
-				</section>
-				
-				<section>
-					<h2>les domaines</h2>
-					<ul>
-						<li>Responsables de la validation</li>
-						<li>Du composant de rendu (consultation et/ou édition)</li>
-						<li>Formatage  des données</li>
-						<li>On peut les utiliser pour le style</li>
-						<li>Utilisation intelligente avec <b>fieldFor</b></li>
-					</ul>
-				</section>
-				
-				<section>
-					<h2>example du domaine do-date.js</h2>
-					<section data-markdown>
-						```javascript
-						import moment from "moment";
-						import InputDate from "focus-components/components/input/date";
-
-						export default {
-							// Composant utiliser en édition
-							InputComponent: DateComponent,
-							// Formatteur de données pour de la consultation
-							formatter: date => date ? moment(date, moment.ISO_8601).format('DD/MM/YYYY') : "",
-							// Formats autorisés de saisie => validation
-							format: ['DD/MM/YYYY', 'DD-MM-YYYY', 'D MMM YYYY']
-						};
-						```
-					</section>
-				</section>
-
-				<section>
-					<h2>Les définitions</h2>
-					<ul>
-						<li>Générées depuis le modèle de données</li>
-						<li>Lie le modèle de données aux domaines</li>
-						<li>Chaque objet a des champs</li>
-						<li>Chaque champ a un domaine</li>
-						<li>Chaque champ porte l'information requis / non requis</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>example de définitions</h2>
-					<section data-markdown>
-						```javascript
-						export const product = {
-							code: {
-								domain: 'DO_ID',
-								required: true
-							},
-							title: {
-								domain: 'DO_LABEL_LONG',
-								required: true
-							},
-							creationDate: {
-								domain: 'DO_DATE',
-								required: false
-							}
-						}
-						```
-					</section>
-				</section>
-			</section>
-
-			<!-- Form mixin -->
-			<section>
-				<section>
-					<h2>Le form mixin</h2>
-					<p>Votre <del><b>pire</b></del> meilleur amis</p>
-				</section>
-
-				<section>
-					<h2>Le form mixin</h2>
-					<ul>
-						<li>Simplification de la gestion de formulaire</li>
-						<li>Formulaire simples ou complexes (ex: sous-listes)</li>
-						<li>Liaisons de champs entre eux</li>
-						<li>Validation automatique avec le domaine ou custom</li>
-						<li>Personnalisation</li>
-					</ul>
-				</section>
-
-				<section data-markdown>
-					## Un exemple de composant mis en musique
-					
-					```javascript
-					import React from "react";
-					import Panel from "focus-components/components/panel";
-					import { mixin as formMixin } from "focus-components/common/form";
-					import { productStore } from "../stores";
-					import { productionActions } from "../actions";
-
-					export const ProductDetailPage = React.createClass({
-						propTypes: { id: PropTypes.number.isRequired },
-						// Le mixin
-						mixins: [formMixin],
-						// Ici on donne le path de la definition pour trouver le domaine
-						definitionPath: "product",
-						// Le store qui contient le noeud utilisé par le formulaire
-						stores: [{store: productStore, properties: ["productDetail"]}],
-						// Les actions : doivent s"appeller load & save
-						action: {
-							load: productActions.loadProductDetail,
-							save: productActions.saveProductDetail
-						},
-						// Ici avoir le formixin oblige a passer par renderContent()
-						renderContent() {
-							return (
-								// Le panel est capable de recevoir les boutons edit/save/cancel
-								&lt;Panel actions={this._renderActions} title="products.detail.title"&gt;
-									// Affichage des différents champs en consultation ou en édition
-									{this.fieldFor("title")}
-									{this.fieldFor("price")}
-									{this.fieldFor("rate")}
-									{this.fieldFor("description")}
-								&lt;/Panel&gt;
-							);
-						}
-					});
-					```
-				</section>
-			</section>
-			
 			<section data-markdown>
 				## tutos
 				- [Faire une page de détail](http://kleegroup.github.io/focus-docs/tutorial/detail.html)
