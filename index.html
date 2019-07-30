@@ -192,9 +192,9 @@
 				<section>
 					<h2>Histoire</h2>
 					<p>
-						Il était une fois un gros site web que s'apelait Facebook. Qui dit Facebook, 
+						Il était une fois un gros site web que s'appelait Facebook. Qui dit Facebook, 
 						dit webapp plus grosse que la plus grosse webapp de tes cauchemars; 
-						et du coup, propension à se retrouver submergé de bugs plus élevée.
+						et du coup, propension à se retrouver submergé de bugs plus élevés.
 					</p>
 					<p>
 						Les ingénieurs front-end de Facebook, confrontés à une codebase de plus en 
@@ -215,10 +215,10 @@
 				<section>
 					<h2>4 concepts</h2>
 					<ul>
-						<li>les <u>actions</u>, proviennent du serveur ou d'une interaction user;</li>
-						<li>le <u>dispatcher</u> reçoit les actions et transmet à qui veut, un peu comme un EventEmitter global;</li>
-						<li>les <u>stores</u>, équivalent du model de l'architecture MVC, ils contiennent les données, réagissent aux actions que le dispatcher leur transmet;</li>
-						<li>les <u>views</u>, qui s'occupent du rendu des données dans le DOM, et de lancer des actions lorsque l'utilisateur effectue certaines actions.</li>
+						<li>les <u>actions</u>: proviennent du serveur ou d'une interaction user;</li>
+						<li>le <u>dispatcher</u>: reçoit les actions et transmet à qui veut, un peu comme un EventEmitter global;</li>
+						<li>les <u>stores</u>: équivalant du model de l'architecture MVC, contiennent les données et réagissent aux actions que le dispatcher leur transmet;</li>
+						<li>les <u>views</u>: s'occupent du rendu des données dans le DOM et lancent des actions lorsque l'utilisateur effectue certaines actions.</li>
 					</ul>
 				</section>
 
@@ -235,7 +235,7 @@
 				<section>
 					<h2>Les 4 concepts en détail</h2>
 					<p>
-						Ici nous allons voir en détail les <b>4 concepts</b>  avec <u>et</u> sans les <b>helpers</b> de focus.
+						Ici, nous allons voir en détail les <b>4 concepts</b>  avec <u>et</u> sans les <b>helpers</b> de focus.
 					</p>
 				</section>
 
@@ -271,7 +271,7 @@
 				<section data-markdown>
 					## Action - Complexe (appel server)
 					
-					Ici l'action va appeler une API sur le backend et dispatch le résultat
+					Ici, l'action va appeler une API sur le backend et dispatcher le résultat
 					
 					```javascript
 					import { appDispatcher } from "../dispatcher";
@@ -324,21 +324,21 @@
 					<h2>Actions - TL;DR</h2>
 					<ul>
 						<li>Une action est une fonction</li>
-						<li>Une action peut appeller un service</li>
-						<li>Peut dispatch au dispatcher: avant, pendant, après l'appel au service</li>
+						<li>Une action peut appeler un service</li>
+						<li>Peut dispatcher au dispatcher: avant, pendant, après l'appel au service</li>
 						<li>
 							On peut utiliser un actionBuilder, il en existe plusieurs :
 							<ul>
 								<li>
-									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/application/action-builder.js">simple</a>
+									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/application/action-builder.js">simple</a>:
 									fonctionne avec un coreStore
 								</li>
 								<li>
-									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/search/action-builder.js">recherche</a>
+									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/search/action-builder.js">recherche</a>:
 									fonctionne avec un searchStore
 								</li>
 								<li>
-									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/list/action-builder.js">liste</a>
+									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/list/action-builder.js">liste</a>:
 									fonctionne avec un listStore
 								</li>
 							</ul>
@@ -354,7 +354,7 @@
 					## Store
 					
 					Le __store__ s'enregistre auprès du __dispatcher__. Il verra donc toutes les __actions__. 
-					C'est au __store__ de savoir si il doit traiter ou non l'__action__
+					C'est au __store__ de savoir s'il doit traiter ou non l'__action__
 
 					```javascript
 					import { appDispatcher } from "../dispatcher";
@@ -382,9 +382,9 @@
 					## Stores avec __CoreStore__
 
 					[CoreStore](https://github.com/KleeGroup/focus-core/tree/master/src/store) 
-					est là pour aider à la création de stores multi-noeuds qui seront mis à jour avec un actionBuilder
+					est là pour aider à la création de stores multi-noeuds qui seront mis à jour avec un actionBuilder.
 
-					Chaque noeud aura aura un status et un état de loading (true ou false)
+					Chaque noeud aura un status et un état de loading (true ou false)
 
 					```javascript
 					import CoreStore from "focus-core/store/CoreStore";
@@ -569,15 +569,15 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td>Applati tous les noeuds écoutés dans le state</td>
+								<td>Applatit tous les noeuds écoutés dans le state</td>
 								<td>Chaque noeud est reçu en props</td>
 							</tr>
 							<tr>
-								<td>Si il y a des conflits de propriétés entre deux noeuds, la dernière va écraser</td>
+								<td>S'il y a des conflits de propriétés entre deux noeuds, la dernière va écraser</td>
 								<td>Les noeuds restant séparés, pas de risques de conflits</td>
 							</tr>
 							<tr>
-								<td>Si une clé disparait entre deux updates on va garder l'ancienne valeur dans le state</td>
+								<td>Si une clé disparait entre deux updates, on va garder l'ancienne valeur dans le state</td>
 								<td>Pas de problèmes 'bro</td>
 							</tr>
 							<tr>
@@ -592,7 +592,7 @@
 					<h2>Flux TL;DR</h2>
 					<ul>
 						<li>L'architecture est unidirectionnelle</li>
-						<li>On raisonne en actions, qui sont déclendhées par la vue ou le serveur</li>
+						<li>On raisonne en actions, qui sont déclenchées par la vue ou le serveur</li>
 						<li>Toutes les actions passent par le dispatcher</li>
 						<li>Seuls les stores signalent aux vues qu'il faut se mettre à jour</li>
 					</ul>
@@ -620,12 +620,12 @@
 						<li><b>config/</b> : la configuration de l'application, domaine, entity, etc.</li>
 						<li><b>i18n/</b> : les fichiers de traductions organisés par module</li>
 						<li><b>initializer/</b> : le boot de l'application</li>
-						<li><b>routes/</b> : les routes organisés par modules</li>
+						<li><b>routes/</b> : les routes organisées par modules</li>
 						<li><b>services/</b> : les services organisés par modules</li>
 						<li><b>stores/</b> : les stores organisés par modules</li>
-						<li><b>styles/</b> : les feuilles de style commune à plusieurs modules</li>
+						<li><b>styles/</b> : les feuilles de style communes à plusieurs modules</li>
 						<li><b>views/</b> : les pages, popins et dialogs organisés par module</li>
-						<li><b>application.jsx</b> : l'initialization de la vue principale de l'appli</li>
+						<li><b>application.jsx</b> : l'initialisation de la vue principale de l'appli</li>
 						<li><b>index.js</b> : l'orchestrateur de l'appli</li>
 					</ul>
 				</section>
@@ -686,7 +686,7 @@
 						<h2>Les définitions</h2>
 						<ul>
 							<li>Générées depuis le modèle de données</li>
-							<li>Lie le modèle de données aux domaines</li>
+							<li>Lient le modèle de données aux domaines</li>
 							<li>Chaque objet a des champs</li>
 							<li>Chaque champ a un domaine</li>
 							<li>Chaque champ porte l'information requis / non requis</li>
@@ -820,7 +820,7 @@
 					<h2>Ancien Router (backbone.js)</h2>
 					<p>
 						Plusieurs projets tournent encore avec un ancien router basé sur backbone.js. 
-						Pour ceux là vous verrez au cas avec vos collègues.
+						Pour ceux-là, vous verrez au cas avec vos collègues.
 					</p>
 				</section>
 			</section>
