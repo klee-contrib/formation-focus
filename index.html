@@ -2,18 +2,16 @@
 <html lang="fr">
 
 <head>
-	<meta charset="utf-8">
+	<title>Formation focus2</title>
 
-	<title>Focus, ...</title>
-
-	<meta name="description" content="Une formation sur le JS">
-	<meta name="author" content="Pierre Besson">
-
+	<meta name="description" content="Une formation sur Focus2">
+	<meta name="author" content="Kleegroup">
 
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 	<link rel="stylesheet" href="css/reveal.css">
 	<link rel="stylesheet" href="css/theme/black.css" id="theme">
@@ -23,11 +21,11 @@
 
 	<!-- Printing and PDF exports -->
 	<script>
-	var link = document.createElement( 'link' );
-	link.rel = 'stylesheet';
-	link.type = 'text/css';
-	link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-	document.getElementsByTagName( 'head' )[0].appendChild( link );
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
 	</script>
 
 	<!--[if lt IE 9]>
@@ -35,459 +33,825 @@
 	<![endif]-->
 	<link href='https://fonts.googleapis.com/css?family=Merriweather:700|Source+Sans+Pro:300,600,300italic,600italic|Source+Code+Pro:400,600' rel='stylesheet' type='text/css'>
 
-
-</head>
-
-<body>
-
 	<style>
 		.redTransparent{
 			background-color: rgba(255, 0, 0, 0.5);
 		}
 		.blackTransparent{
 			background-color: rgba(0, 0, 0, 0.5);
+			padding: 12px !important;
+		}
+		html .reveal {
+			font-size: 34px;
+		}
+		.reveal strong, .reveal b {
+			color: #cc9393;
 		}
 	</style>
+</head>
+
+<body>
 
 	<div class="reveal">
 		<div class="slides">
+
+			<!-- Section générale sur focus -->
 			<section>
-				<section data-background=''>
-					<h1>Focus</h1>
+				<section>
+					<h2>Focus</h2>
 					<p>
 						<a href='http://get-focus.github.io/formation-focus/#/'>http://get-focus.github.io/formation-focus</a>
 					</p>
 				</section>
+
 				<section>
-					<h1>Pourquoi Focus?</h1>
+					<h2>Pourquoi Focus?</h2>
 				</section>
+
 				<section data-background='https://i.ytimg.com/vi/M_WUvsFY9-4/maxresdefault.jpg'>
 					<h2 class='blackTransparent'>Klee fait des applications sur mesure</h2>
 				</section>
-				<section ><h1>Les missions de Focus</h1></section>
+
+				<section ><h2>Les missions de Focus</h2></section>
+				
 				<section data-background='http://usabilitygeek.com/wp-content/uploads/2011/07/usability-user-experience-difference.jpg'>
-					<h1 class='blackTransparent'>Remettre l'humain au centre UX</h1>
+					<h2 class='blackTransparent'>Remettre l'humain au centre UX</h2>
 				</section>
-				<section data-background='http://keithrhiggons.com/wp-content/uploads/2014/09/CHANGES.jpg'>
-					<h1 class='redTransparent'>Capter et digérer l'innovation</h1>
-				</section>
+
 				<section data-background='https://media.giphy.com/media/W4ZYPB4q4DSbS/giphy.gif'>
-					<h1 class='blackTransparent'>Developer Experience DX</h1>
+					<h2 class='blackTransparent'>Developer Experience DX</h2>
 				</section>
-				<section>
-					<h2>Les livrables</h2>
-					<ul>
-						<li>Support de communication et d'aide à la vente</li>
-						<li>Les templates de page</li>
-						<li>Libraries JS</li>
-						<li>Showcase de composants</li>
-						<li>Blog d'articles UX / Tech</li>
-						<li>Documentation  technique focus-docs</li>
-						<li>Extensions prêtes à l'emploi (notifs, comments, ...)</li>
-					</ul>
+
+				<section data-background='http://keithrhiggons.com/wp-content/uploads/2014/09/CHANGES.jpg'>
+					<h2 class='redTransparent'>Capter et digérer l'innovation</h2>
 				</section>
+				
 				<section>
-					<h1>Objectifs</h1>
+					<h2>Objectifs</h2>
 				</section>
+
 				<section>
-					<h2>Faire rapidement et facilement 80 % des écrans de l'application</h2>
+					<h3>Faire rapidement et facilement 80% des écrans de l'application</h3>
 					<ul>
 						<li>Respecter les maquettes</li>
 						<li>Composants UX prêt à l'emploi</li>
 					</ul>
 				</section>
+
 				<section>
-					<h2>Faire facilement du sur mesure 20 % des écrans de l'application</h2>
+					<h3>Faire facilement du sur mesure 20% des écrans de l'application</h3>
+					<ul>
+						<li>Utilisation de React & Flux</li>
+					</ul>
 				</section>
-				<section data-background='http://www.friteries-sensas.fr/gifs/presse1.jpg'>
-					<h1 class='redTransparent'>Le bureau Focus</h1>
+
+				<section data-background='https://cdnfr1.img.sputniknews.com/images/103359/83/1033598316.jpg'>
+					<h2 class='blackTransparent'>Le bureau Focus</h2>
 				</section>
+				
 				<section data-background='http://www.cosatto.com/blog/wp-content/uploads/2011/08/babyshow_smaller.jpg'>
-					<ul class='blackTransparent' style=''>
-						<li data-fragment>Validation de choix avant de se lancer ?</li>
-						<li>Conception de maquettes</li>
+					<ul class='blackTransparent'>
+						<li>Validation de choix avant de se lancer ?</li>
 						<li>Validation des maquettes</li>
 						<li>Conception technique d'écran</li>
 						<li>Pour partager vos bonnes idées</li>
 					</ul>
 				</section>
+
 				<section data-background='http://www.quizz.biz/uploads/quizz/888745/1_98CBQ.jpg'>
-					<h2 class='redTransparent'>Je n'arrive pas à faire rentrer mon écran dans le pattern</h2>
+					<h2 class='blackTransparent'>Je n'arrive pas à faire rentrer mon écran dans le pattern</h2>
 					<ul></ul>
 				</section>
+
 				<section data-background='http://regmedia.co.uk/2012/04/02/word_2_doc.png'>
-					<h2 class='redTransparent'>Mon client veut un écran un peu funky</h2>
+					<h2 class='blackTransparent'>Mon client veut un écran un peu funky</h2>
 
 				</section>
+
 				<section data-background='http://www.xanetiz.com/images/articles/bugs-connus-histoire1.png'>
-					<h2 class='redTransparent'>Je trouve un bug sur Focus</h2>
+					<h2 class='blackTransparent'>Je trouve un bug sur Focus</h2>
 				</section>
+
 				<section>
 					<h2>Des suggestions ou problèmes:</h2>
 					<ul>
-						<li>focus-bureau@kleegroup.com</li>
-						<li><a href='http://community-focus.slack.com/'>Slack Focus community</a></li>
-						<li>Validation des maquettes</li>
-						<li>Conception technique d'écran</li>
-						<li>Pour partager vos bonnes idées.</li>
+						<li>focus@kleegroup.com</li>
+						<li><a href='http://community-focus.slack.com/'>community-focus #slack</a></li>
 					</ul>
 				</section>
 			</section>
+
+
+			<!-- Section github & eco-système -->
 			<section>
 				<section data-background='https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png'>
-<h2 class='blackTransparent'>github</h2>
-			</section>
-			<section><h1><a href='https://getfocus.io'>GetFocus.io</a></h1></section>
-			<section data-markdown>
-# Les librairies coeur
-
-## [Focus Core](https://github.com/KleeGroup/focus-core)
-
-## [Focus Components](https://github.com/KleeGroup/focus-components)
-
-			</section>
-			<section data-markdown>
-# Les extensions
-
-## [Focus file](https://github.com/KleeGroup/focus-file)
-
-## [Focus Notification](https://github.com/KleeGroup/focus-notification)
-## [Focus Comments](https://github.com/KleeGroup/focus-comments)
-</section>
-<section data-markdown>
-# Documentation
-
-## [Focus Showcase](https://github.com/KleeGroup/focus-showcase)
-
-## [Focus docs](https://github.com/KleeGroup/focus-docs)
-
-##  [Focus demo](https://github.com/KleeGroup/focus-demo)
-</section>
-<section data-markdown>
-# Outils
-
-## [Focus eslint](https://github.com/KleeGroup/eslint-config-focus)
-
-## [Focus webpack](https://github.com/KleeGroup/webpack-focus)
-			</section>
-			<section><h1><a href='http://kleegroup.github.io/focus-docs/contribute/index.html'>Contribuez à Focus</a></h1></section>
-			<section>Articles, Fork, issues, PR, doc, tuto, DX ...</section>
-			</section>
-			<section data-background='https://media.giphy.com/media/Sq4QZyBwagvle/giphy.gif'><h1>Focus.js</h1></section>
-			<section>
-				<section><h1>Le router de l'application</h1></section>
-				<section data-markdown>
-					## [Router](https://github.com/reactjs/react-router)
-
-					![router](https://cloud.githubusercontent.com/assets/286966/15237848/4daec5de-18d2-11e6-8b77-b5e3387014c9.png)
-
+					<h2 class='blackTransparent'>github</h2>
 				</section>
+
 				<section>
-					<h1>Et voici l'exemple</h1>
-				<section data-markdown>
-```javascript
-import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-import AppLayout from '../components/layout'
-import HomeRoute from './home-route';
-import MasterdataRoutes from './masterdata-routes';
-import MoviesRoutes from './movies-route';
-import PersonsRoutes from './persons-route';
-import SearchRoutes from './advanced-search-route';
-import ErrorRoutes from './error-route';
-
-export default {
-    path: `${__BASE_URL__}`,
-    indexRoute: { onEnter: ({ params }, replace) => replace(`${__BASE_URL__}home`) },
-    component: AppLayout,
-    childRoutes: [...HomeRoute, ...MasterdataRoutes, ...MoviesRoutes, ...PersonsRoutes, ...SearchRoutes, ...ErrorRoutes]
-};
-
-import React from 'react';
-import MovieDetailView from '../views/movie/detail';
-
-const route = [
-    {
-        path: 'movies/:id',
-        component: (props) => (<MovieDetailView id={parseInt(props.params.id)} {...props}/>)
-    }
-];
-
-export default route;
-```
+					<h2><a href='https://getfocus.io'>GetFocus.io</a></h2>
 				</section>
+
+				<section>
+					<h2>Les librairies coeur</h2>
+					<h2><a href="https://github.com/KleeGroup/focus-core">Focus Core</a></h2>
+					<h2><a href="https://github.com/KleeGroup/focus-components">Focus Components</a></h2>
+				</section>
+
+				<section>
+					<h2>Les extensions</h2>
+					<h2><a href="https://github.com/KleeGroup/focus-file">Focus file</a></h2>
+					<h2><a href="https://github.com/KleeGroup/focus-notification">Focus Notification</a></h2>
+					<h2><a href="https://github.com/KleeGroup/focus-comments">Focus Comments</a></h2>
+				</section>
+
+				<section>
+					<h2>Documentation</h2>
+					<h2><a href="https://github.com/KleeGroup/focus-docs">Focus docs</a></h2>
+				</section>
+
+				<section>
+					<h2>Outils</h2>
+					<h2><a href="https://github.com/KleeGroup/eslint-config-focus">Focus eslint</a></h2>
+					<h2><a href="https://github.com/KleeGroup/webpack-focus">Focus webpack</a></h2>
+				</section>
+
+				<section>
+					<h2><a href='http://kleegroup.github.io/focus-docs/contribute/index.html'>Contribuez à Focus</a></h2>
+					<p>issues, PR, doc, articles, tuto, DX, ...</p>
+				</section>
+			</section>
+
+			<!-- Section flux-->
+			<section>
+				<section>
+					<h2>Flux</h2>
+					<p><a href="https://github.com/facebook/flux">Flux's github</a></p>
+				</section>
+
+				<section>
+					<h2>Histoire</h2>
+					<p>
+						Il était une fois un gros site web que s'appelait Facebook. Qui dit Facebook, 
+						dit webapp plus grosse que la plus grosse webapp de tes cauchemars ; 
+						et du coup, propension à se retrouver submergé de bugs plus élevés.
+					</p>
+					<p>
+						Les ingénieurs front-end de Facebook, confrontés à une codebase de plus en 
+						plus bordélique (personne ne voulant toucher certaines parties de celle-ci) 
+						ont dû repenser la structure des composants les plus cruciaux.
+					</p>
 				</section>
 				
+				<section data-background-image="./images/twitter.gif" data-background-size="contain" data-background-color="black">
+					<h2 class="blackTransparent">Bug photos twitter (8ans+)</h2>
+				</section>
+				
+				<section>
+					<h2>En image</h2>
+					<img src="./images/flux_concepts.png" alt="flux">
+				</section>
+
+				<section>
+					<h2>4 concepts</h2>
+					<ul>
+						<li>les <u>actions</u> : proviennent du serveur ou d'une interaction user ;</li>
+						<li>le <u>dispatcher</u> : reçoit les actions et transmet à qui veut, un peu comme un EventEmitter global ;</li>
+						<li>les <u>stores</u> : équivalant du model de l'architecture MVC, contiennent les données et réagissent aux actions que le dispatcher leur transmet ;</li>
+						<li>les <u>views</u> : s'occupent du rendu des données dans le DOM et lancent des actions lorsque l'utilisateur effectue certaines actions.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Flux - Phase d'enregistrement</h2>
+					<img src="./images/focus-flux1.PNG" alt="flux1">
+				</section>
+	
+				<section>
+					<h2>flux - Phase de dispatch</h2>
+					<img src="./images/focus-flux2.PNG" alt="flux2">
+				</section>
+		
+				<section>
+					<h2>Les 4 concepts en détail</h2>
+					<p>
+						Ici, nous allons voir en détail les <b>4 concepts</b>  avec <u>et</u> sans les <b>helpers</b> de Focus.
+					</p>
+				</section>
+
+				<section>
+					<h2>Actions</h2>
+				</section>
+
+				<section data-markdown>
+					## Action - Simple (action interne)
+					
+					On définit une action avec un __action creator__
+					
+					```javascript
+					import { appDispatcher } from "../dispatcher";
+					import { actionTypes } from "../constants";
+
+					// Actions du basket
+					export const basketActions = {
+						// Action creator : addToBasket
+						addToBasket(productId) {
+							// Dispatch l'action au travers du dispatcher
+							appDispatcher.handleViewAction({
+								// Type de l'action
+								type: actionTypes.ADD_TO_BASKET,
+								// Payload de l'action
+								productId: productId,
+							});
+						},
+					};
+					```
+				</section>
+
+				<section data-markdown>
+					## Action - Complexe (appel server)
+					
+					Ici, l'action va appeler une API sur le backend et dispatcher le résultat
+					
+					```javascript
+					import { appDispatcher } from "../dispatcher";
+					import { actionTypes } from "../constants";
+					import { basketService } from "../services";
+
+					// Actions du basket
+					export const basketActions = {
+						// Action creator : orderBasket
+						orderBasket() {
+							// Appel du service
+							basketService.orderBasket().then(orderStatus => {
+								// Dispatch du resultat du service
+								appDispatcher.handleServerAction({
+									type: actionTypes.ORDER_BASKET,
+									orderStatus: orderStatus,
+								});
+							})
+						},
+					};
+					```
+				</section>
+
+				<section data-markdown>
+					## Actions avec __actionBuilder__
+					
+					L'action builder est là pour simplifier la mise à jour d'un store à partir du résultat d'un appel au serveur via un service
+					
+					```javascript
+					import actionBuilder from "focus-core/application/action-builder";
+					import basketServices from "../services";
+
+					export const basketActions = {
+						// Action qui sera disponible
+						addToBasket: actionBuilder({
+							// Service qui sera appelé
+							service: basketServices.addToBasket,
+							// Noeud du store qui est update
+							node: "basket",
+							// Statut à la fin de l'action
+							status: "updated"
+						})
+					};
+
+					// => on pourra faire basketActions.addToBasket(productId)
+					```
+				</section>
+
+				<section>
+					<h2>Actions - TL;DR</h2>
+					<ul>
+						<li>Une action est une fonction</li>
+						<li>Une action peut appeler un service</li>
+						<li>Peut dispatcher au dispatcher : avant, pendant, après l'appel au service</li>
+						<li>
+							On peut utiliser un actionBuilder, il en existe plusieurs :
+							<ul>
+								<li>
+									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/application/action-builder.js">simple</a> :
+									fonctionne avec un coreStore
+								</li>
+								<li>
+									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/search/action-builder.js">recherche</a> :
+									fonctionne avec un searchStore
+								</li>
+								<li>
+									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/list/action-builder.js">liste</a> :
+									fonctionne avec un listStore
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Stores</h2>
+				</section>
+
+				<section data-markdown>
+					## Store
+					
+					Le __store__ s'enregistre auprès du __dispatcher__. Il verra donc toutes les __actions__. 
+					C'est au __store__ de savoir s'il doit traiter ou non l'__action__
+
+					```javascript
+					import { appDispatcher } from "../dispatcher";
+					import { actionTypes } from "../constants";
+
+					// Etat initial du store et fonction de mise à jour
+					export const basketStore = createStore({ products: [] }, action => {
+						const { type } = action;
+						
+						switch (action) {
+							case actionTypes.ADD_TO_BASKET:
+								const { productId } = action;
+								// Ajoute le productId à la collection
+								this.products = [...this.products, productId];
+								break;
+							// [...] Autres actions
+						}
+					});
+
+					appDispatcher.register(basketStore.dispatcherCallback);
+					```
+				</section>
+	
+				<section data-markdown>
+					## Stores avec __CoreStore__
+
+					[CoreStore](https://github.com/KleeGroup/focus-core/tree/master/src/store) 
+					est là pour aider à la création de stores multi-noeuds qui seront mis à jour avec un actionBuilder.
+
+					Chaque noeud aura un status et un état de loading (true ou false)
+
+					```javascript
+					import CoreStore from "focus-core/store/CoreStore";
+
+					export const basketStore = new CoreStore({
+						basket
+					});
+
+					// => bastketStore aura un noeud nommé "basket"
+					```
+				</section>
+
+				<section>
+					<h2>Stores - TL;DR</h2>
+					<ul>
+						<li>
+							Un store est un objet qui contient une grappe de données
+							<ul>
+								<li>
+									Store simple :
+									<a href="https://github.com/KleeGroup/focus-core/blob/develop/src/store/CoreStore.js">CoreSore</a>
+								</li>
+								<li>
+									Stores spécialisés :
+									<a href="https://github.com/KleeGroup/focus-core/tree/master/src/store/list/index.js">ListStore</a>,
+									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/store/search/advanced-search/index.js">AdvancedSearchStore</a>,
+									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/store/search/quick-search/index.js">QuickSearchStore</a>
+								</li>
+							</ul>
+						</li>
+						<li>Un store notifie : d'un changement d'état, d'une erreur</li>
+						<li>Chaque noeud de données a un statut et un état de chargement</li>
+					</ul>
+				</section>
+	
+				<section>
+					<h2>Services</h2>
+				</section>
+
+				<section data-markdown>
+					## Service
+					
+					```javascript
+					import basketApis from '../apis';
+					
+					// Basket service
+					export basketService {
+						orderBasket() {
+							return basketApis.oderBasket();
+						},
+						addToBacket(productId) {
+							return basketApis.addToBasket({}, { productId })
+						}
+						// Api méthode signature : (urlParams, bodyParam, options)
+					}
+					```
+
+					- 80% sont un passe plat vers une API
+					- 20% peuvent réaliser des actions complexes
+				</section>
+
+				<section>
+					<h2>Views</h2>
+				</section>
+	
+				<section data-markdown>
+					## View - dispatch d'une action
+					
+					On émet une action lors d'une action utilisateur
+					
+					```javascript
+					import { React } from "react";
+					import { basketActions } from "../actions";
+					import { Button } from "../components";
+
+					export const Product = ({ productId }) => (
+						&lt;div class="product"&gt;
+							{/* Component stuff */}
+							&lt;button&gt;
+								{/* Appel de l'action creator */}
+								onClick={() => basketActions.addToBasket(productId)}
+								label="Ajouter au panier"
+							&lt;/button&gt;
+						&lt;/div&gt;
+					);
+					```
+					
+					A chaque clic sur le bouton, l'action ADD_TO_BASKET est passée au dispatcher
+				</section>
+
+				<section data-markdown>
+					## View - Ecoute d'un store
+					```javascript
+					import { React } from "react";
+					import { basketStore } from "../stores";
+
+					export const Basket = React.createClass({
+						// State initial du composant
+						getInitialState() { return { products: basketStore.products }; },
+						// Fonction appellée au changement de données dans le store
+						_onStoreChange() { this.setState({ products: basketStore.products }); },
+						// Le composant s'enregistre auprès du store pour recevoir les modifications
+						componentDidMount() { basketStore.addChangeListener(this._onStoreChange); },
+						// Le composant annule sa souscription auprès du store
+						componentWillUnmount() { basketStore.removeChangeListener(this._onStoreChange); },
+						render() {
+							&lt;div class="basket"&gt;
+								{`${this.state.products.length} products`} 
+							&lt;/div&gt;
+						}
+					});
+					```
+				</section>
+				
+				<section data-markdown>
+					## Une view avec __store mixin__
+
+					Le [store mixin](https://github.com/KleeGroup/focus-components/blob/master/src/mixin/store-behaviour.js) 
+					va écouter le store et mettre à jour le state avec la valeur du/des noeud(s)
+
+					```javascript
+					import { React } from "react";
+					import { storeBehaviour } from "focus-components/mixin";
+					import { basketStore } from "../stores";
+
+					export const Basket = React.createClass({
+						// Utilisation du store mixin
+						mixins: [storeBehaviour],
+						// Ecoute du noeud "basket" du basketStore
+						stores: [
+							{ store: basketStore, properties: ["basket"] }
+						],
+						render() {
+							&lt;div class="basket"&gt;
+								{`${this.state.products.length} products`} 
+							&lt;/div&gt;
+						}
+					})
+
+					```
+				</section>
+				
+				<section data-markdown>
+					## Une view avec __store connector__
+
+					Le [store connector](https://github.com/KleeGroup/focus-components/blob/master/src/behaviours/store/connect.js) 
+					va écouter le store et recalculer les props à donner au composant connecté
+					
+					```javascript
+					import { React } from "react";
+					import storeConnector from "focus-components/behaviours/store/connect";
+					import { basketStore } from "../stores";
+
+					const connector = storeConnector(
+						{ store: basketStore, properties: ["basket"] },
+						// Fonction de calcul des props du composant connecté
+						props => ({
+							...props, // On transfert les props données par le parent
+							// On pourrait appliquer n'importe quelle transformation
+							basket: basketStore.getBasket()
+						})
+					);
+					export const Basket = connector(props => (
+						&lt;div class="basket"&gt;
+							{`${props.basket.products.length} products`} 
+						&lt;/div&gt;
+					));
+					```
+				</section>
+
+				<section>
+					<table>
+						<colgroup>
+							<col width="55%" />
+							<col width="45%" />
+						</colgroup>
+						<thead>
+							<tr>
+								<th><h3>Store Mixin</h3></th>
+								<th><h3>Store Connector</h3></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Applatit tous les noeuds écoutés dans le state</td>
+								<td>Chaque noeud est reçu en props</td>
+							</tr>
+							<tr>
+								<td>S'il y a des conflits de propriétés entre deux noeuds, la dernière va écraser</td>
+								<td>Les noeuds restant séparés, pas de risques de conflits</td>
+							</tr>
+							<tr>
+								<td>Si une clé disparait entre deux updates, on va garder l'ancienne valeur dans le state</td>
+								<td>Pas de problèmes 'bro</td>
+							</tr>
+							<tr>
+								<td>Pratique pour un formulaire</td>
+								<td>Pas pratique pour un formulaire</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Flux TL;DR</h2>
+					<ul>
+						<li>L'architecture est unidirectionnelle</li>
+						<li>On raisonne en actions, qui sont déclenchées par la vue ou le serveur</li>
+						<li>Toutes les actions passent par le dispatcher</li>
+						<li>Seuls les stores signalent aux vues qu'il faut se mettre à jour</li>
+					</ul>
+				</section>
 			</section>
+
+
+			<!-- Section Focus -->
+			<section data-background='https://media.giphy.com/media/Sq4QZyBwagvle/giphy.gif'><h2>Focus2.js</h2></section>
+
+
+			<!-- Architecture d'application -->
 			<section>
-				<section><h1>Les domaines et les définitions</h1></section>
-				<section data-markdown>
-					## les domaines
 
-					- Responsable de la validation
-					- Du composant de rendu (consultation, édition)
-					- formatage  des données
-					- On peut les utiliser pour le style
-					- Utilisation intelligente avec `fieldFor`
-				</section>
-				<section data-markdown>
-## example du domaine do-date.js
-
-```javascript
-import moment from 'moment';
-import {Date as DateComponent} from 'focus-components/components/input';
-
-export default {
-    InputComponent: DateComponent,
-    formatter: date => date ? moment(date, moment.ISO_8601).format('DD/MM/YYYY') : '',
-    format: ['DD/MM/YYYY', 'DD-MM-YYYY', 'D MMM YYYY']
-};
-```
-				</section>
-				<section data-markdown>
-					## Les définitions
-
-- Générées depuis le modèle de données
-- Lie le modèle de données ayu domaines
-- Chaque table a des champs
-- Chaque champ a un domaine
-- Chaque champ porte l'information requis / non requis
-				</section>
-				<section data-markdown>
-## example de définitions
-
-```javascript
-export const movie = {
-    code: {
-        domain: 'DO_ID',
-        required: true
-    },
-    title: {
-        domain: 'DO_LABEL_LONG',
-        required: true
-    },
-	creationDate: {
-		domain: 'DO_DATE',
-		required: false
-	}
-}
-
-// fieldFor(creationDate)
-```
+				<section>
+					<h2>Architecture d'une app Focus2</h2>
+					<img src="./images/archi.png" alt="archi">
 				</section>
 
+				<section>
+					<h2>Dossiers d'une app Focus2</h2>
+					<ul>
+						<li><b>actions/</b> : toutes les actions organisées par module</li>
+						<li><b>components/</b> : tous les composants communs à plusieurs modules.</li>
+						<li><b>config/</b> : la configuration de l'application, domaine, entity, etc.</li>
+						<li><b>i18n/</b> : les fichiers de traductions organisés par module</li>
+						<li><b>initializer/</b> : le boot de l'application</li>
+						<li><b>routes/</b> : les routes organisées par modules</li>
+						<li><b>services/</b> : les services organisés par modules</li>
+						<li><b>stores/</b> : les stores organisés par modules</li>
+						<li><b>styles/</b> : les feuilles de style communes à plusieurs modules</li>
+						<li><b>views/</b> : les pages, popins et dialogs organisés par module</li>
+						<li><b>application.jsx</b> : l'initialisation de la vue principale de l'appli</li>
+						<li><b>index.js</b> : l'orchestrateur de l'appli</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Flux with Focus</h2>
+					<br />
+					<table>
+						<tbody>
+							<tr>
+								<td>Rappel, focus c'est :</td>
+								<td><b>80%</b> générique</td>
+								<td><b>20%</b> spécifique</td>
+							</tr>
+						</tbody>
+					</table>
+					<p>Il y a des helpers pour <b>tout</b> (ou presque...)</p>
+				</section>
 			</section>
+			
+			<!-- Section domaine & definition -->
 			<section>
-				<section><h1>Flux by Focus</h1></section>
-				<section data-markdown>
-					## flux by Facebook
-
-					![flux](https://facebook.github.io/flux/img/flux-simple-f8-diagram-with-client-action-1300w.png)
+					<section>
+						<h2>Les domaines et les définitions</h2>
+					</section>
+					
+					<section>
+						<h2>les domaines</h2>
+						<ul>
+							<li>Responsables de la validation</li>
+							<li>Du composant de rendu (consultation et/ou édition)</li>
+							<li>Formatage  des données</li>
+							<li>On peut les utiliser pour le style</li>
+							<li>Utilisation intelligente avec <b>fieldFor</b></li>
+						</ul>
+					</section>
+					
+					<section>
+						<h2>example du domaine do-date.js</h2>
+						<section data-markdown>
+							```javascript
+							import moment from "moment";
+							import InputDate from "focus-components/components/input/date";
+	
+							export default {
+								// Composant utiliser en édition
+								InputComponent: DateComponent,
+								// Formatteur de données pour de la consultation
+								formatter: date => date ? moment(date, moment.ISO_8601).format('DD/MM/YYYY') : "",
+								// Formats autorisés de saisie => validation
+								format: ['DD/MM/YYYY', 'DD-MM-YYYY', 'D MMM YYYY']
+							};
+							```
+						</section>
+					</section>
+	
+					<section>
+						<h2>Les définitions</h2>
+						<ul>
+							<li>Générées depuis le modèle de données</li>
+							<li>Lient le modèle de données aux domaines</li>
+							<li>Chaque objet a des champs</li>
+							<li>Chaque champ a un domaine</li>
+							<li>Chaque champ porte l'information requis / non requis</li>
+						</ul>
+					</section>
+	
+					<section>
+						<h2>Exemple de définitions</h2>
+						<section data-markdown>
+							```javascript
+							export const product = {
+								code: {
+									domain: 'DO_ID',
+									required: true
+								},
+								title: {
+									domain: 'DO_LABEL_LONG',
+									required: true
+								},
+								creationDate: {
+									domain: 'DO_DATE',
+									required: false
+								}
+							}
+							```
+						</section>
+					</section>
 				</section>
-				<section data-markdown>
-					## Architecture
-
-![archi](https://cloud.githubusercontent.com/assets/286966/15237742/4df03ccc-18d1-11e6-9753-97777780453b.png)
-
-				</section>
-				<section data-markdown>
-					# les stores
-
-					![stores](https://s3.amazonaws.com/media-p.slid.es/uploads/52889/images/1647931/store.PNG)
-				</section>
-				<section data-markdown>
-					# Flux
-
-					![flux1](https://s3.amazonaws.com/media-p.slid.es/uploads/52889/images/1647945/focus-flux1.PNG)
-				</section>
-				<section data-markdown>
-					# flux
-
-					![flux2](https://s3.amazonaws.com/media-p.slid.es/uploads/52889/images/1647946/focus-flux2.PNG)
-				</section>
-				<section data-markdown>
-# Service
-
-- Un service est une fonction
-- Un service appelle une url construite grâce à [urlbuilder](https://github.com/KleeGroup/focus-core/blob/develop/src/list/action-builder.js)
-- Un service retourne une `Promise`
-- On peut utiliser la méthode `fetch` de [focus](https://github.com/KleeGroup/focus-core/blob/develop/src/network/fetch.js)
-				</section>
+	
+				<!-- Form mixin -->
 				<section>
-					<h2>Exemple de service (retourne impérativement une Promise)</h2>
-					<pre>
-						<code class='javascript'>
-import fetch from 'focus-core/network/fetch';
-//Fait une reqête ajax
-import movieUrl from '../config/server/movies';
-// Les urls de ws sont configurées
-export default {
-    loadMovie(id) {
-        return fetch(movieUrl.loadMovie({urlData: {id}}));
-    },
-    saveMovieSynopsis(data) {
-        return fetch(movieUrl.saveMovie({urlData: {id: data.id}, data: {data}}));
-    },
-    saveMovieCaracteristics(data) {
-        return fetch(movieUrl.saveMovie({urlData: {id: data.id}, data: {data}}));
-    }
-}
-						</code>
-					</pre>
+					<section>
+						<h2>Le form mixin</h2>
+						<p>Votre <del><b>pire</b></del> meilleur amis</p>
+					</section>
+	
+					<section>
+						<h2>Le form mixin</h2>
+						<ul>
+							<li>Simplification de la gestion de formulaire</li>
+							<li>Formulaire simples ou complexes (ex: sous-listes)</li>
+							<li>Liaisons de champs entre eux</li>
+							<li>Validation automatique avec le domaine ou custom</li>
+							<li>Personnalisation</li>
+						</ul>
+					</section>
+	
+					<section data-markdown>
+						## Un exemple de composant mis en musique
+						
+						```javascript
+						import React from "react";
+						import Panel from "focus-components/components/panel";
+						import { mixin as formMixin } from "focus-components/common/form";
+						import { productStore } from "../stores";
+						import { productionActions } from "../actions";
+	
+						export const ProductDetailPage = React.createClass({
+							propTypes: { id: PropTypes.number.isRequired },
+							// Le mixin
+							mixins: [formMixin],
+							// Ici on donne le path de la definition pour trouver le domaine
+							definitionPath: "product",
+							// Le store qui contient le noeud utilisé par le formulaire
+							stores: [{store: productStore, properties: ["productDetail"]}],
+							// Les actions : doivent s"appeller load & save
+							action: {
+								load: productActions.loadProductDetail,
+								save: productActions.saveProductDetail
+							},
+							// Ici avoir le formixin oblige a passer par renderContent()
+							renderContent() {
+								return (
+									// Le panel est capable de recevoir les boutons edit/save/cancel
+									&lt;Panel actions={this._renderActions} title="products.detail.title"&gt;
+										// Affichage des différents champs en consultation ou en édition
+										{this.fieldFor("title")}
+										{this.fieldFor("price")}
+										{this.fieldFor("rate")}
+										{this.fieldFor("description")}
+									&lt;/Panel&gt;
+								);
+							}
+						});
+						```
+					</section>
 				</section>
-				<section data-markdown>
-# store
-
-- Un store est un objet qui contient une grappe de données
-- Associé à une notion de grappe d'objet ([corestore](https://github.com/KleeGroup/focus-core/blob/develop/src/store/CoreStore.js))
-- Il existe des stores spécialisées ([recherche](https://github.com/KleeGroup/focus-core/tree/develop/src/store/search), [liste](https://github.com/KleeGroup/focus-core/tree/develop/src/store/search))
-- Il peut notifier: d'un changement, d'une erreur
-- Chaque noeud de données peut avoir un statut
-				</section>
+				
+			<!-- Section Routing -->
+			<section>
 				<section>
-					<h2>Exemple de store</h2>
-					<pre>
-						<code class='javascript'>
-import {CoreStore} from 'focus-core/store';
-const movieStore = new CoreStore({
-    definition: {
-        movie: 'movie',
-		actors: 'actors'
-    }
-});
-
-export default movieStore;
-						</code>
-					</pre>
+					<h2>Le router de l'application</h2>
 				</section>
-				<section data-markdown>
-# action
-
-- Une action est une fonction
-- Une action doit appeller un service
-- Avec le retour (après l'appel serveur)
-- Dispatch le résultat dans le `dispatcher`
-- On peut utiliser le `actionBuilder` ([detail](https://github.com/KleeGroup/focus-core/blob/develop/src/application/action-builder.js), [recherche](https://github.com/KleeGroup/focus-core/blob/develop/src/search/action-builder.js), [liste](https://github.com/KleeGroup/focus-core/blob/develop/src/list/action-builder.js))
-				</section>
+				
 				<section>
-					<h2>Exemple d'action</h2>
-					<pre>
-						<code class='javascript'>
-import actionBuilder from 'focus-core/application/action-builder';
-import {loadMovie, saveMovieSynopsis} from '../services/movie';
-
-export const synopsisActions = {
-    load: actionBuilder({
-        node: 'movie',
-        service: loadMovie,
-        shouldDumpStoreOnActionCall: true,
-        status: 'loaded'
-    }),
-    save: actionBuilder({
-        node: 'movie',
-        service: saveMovieSynopsis,
-        shouldDumpStoreOnActionCall: true,
-        status: 'saved'
-    })
-}
-						</code>
-					</pre>
+					<h2>React Router</h2>
+					<p>
+						<a href="https://github.com/ReactTraining/react-router"> React Router</a>
+						est une librairie qui affiche vos composants en fonction de l'URL de votre navigateur. 
+						En gros, c'est indispensable si vous voulez faire une SPA et que vous voulez que l'utilisateur puisse 
+						croire que c'est un site normal qu'il peut partager, bookmarker, etc.
+					</p>
 				</section>
-				<section data-background='http://auto.mgl.skyrock.net/art/SHAR.8448.337.2.jpg'>
-					<h2>Un exemple de composant mis en musique</h2>
-					<pre>
-						<code class="javascript">
-//librairies
-import React, {PropTypes} from 'react';
-import FocusComponents from 'focus-components';
+				
+				<section data-markdown>
+					## React Router - Exemple
+					
+					```javascript
+					import React from "react";
+					import { Router, browserHistory } from "react-router";
+					import { AppLayout } from "../components";
+					import { ProductDetailPage } from "../views/products/detail";
 
-// web components
-import Panel from 'focus-components/components/panel';
-import {mixin as formMixin} from 'focus-components/common/form';
+					const productRoutes = [{
+						path: 'products/:id',
+						component: props => (&lt;ProductDetailPage id={parseInt(props.params.id)} {...props}/&gt;)
+					}];
+					const routes = {
+						path: `${__BASE_URL__}`,
+						indexRoute: { onEnter: ({ params }, replace) => replace(`${__BASE_URL__}home`) },
+						component: AppLayout,
+						childRoutes: [...productRoutes, ...errorRoutes]
+					};
+					export const Application = () => {
+						&lt;Router history={browserHistory} routes={routes} /&gt;
+					}
+					```
+				</section>
 
-//stores & actions
-import movieStore from '../../../stores/movie';
-import {caracteristicsActions} from '../../../action/movie';
-
-export default React.createClass({
-    displayName: 'MovieCaracteristics',
-    propTypes: {
-        id: PropTypes.number
-    },
-    mixins: [formMixin],
-    definitionPath: 'movie',
-    stores: [{store: movieStore, properties: ['movie']}],
-    action: caracteristicsActions,
-
-    /** @inheritDoc */
-    renderContent() {
-        return (
-            <Panel actions={this._renderActions} title='movie.detail.caracteristics'>
-                {this.fieldFor('title')}
-                {this.fieldFor('originalTitle')}
-                {this.fieldFor('keywords')}
-                {this.fieldFor('runtime')}
-                {this.fieldFor('movieType')}
-                {this.fieldFor('productionYear')}
-                {this.fieldFor('trailerName')}
-                {this.fieldFor('trailerHRef')}
-            </Panel>
-        );
-    }
-});
-						</code>
-					</pre>
+				<section>
+					<h2>Ancien Router (backbone.js)</h2>
+					<p>
+						Plusieurs projets tournent encore avec un ancien router basé sur backbone.js. 
+						Pour ceux-là, vous verrez au cas avec vos collègues.
+					</p>
 				</section>
 			</section>
+
+
 			<section data-markdown>
-	## tutos
-	- [Faire une page de détail](http://kleegroup.github.io/focus-docs/tutorial/detail.html)
-	- [Faire une page de liste](http://kleegroup.github.io/focus-docs/tutorial/list.html)
-	</section>
-	<section data-markdown>
-				## Structure applicative
+				## tutos
+				- [Faire une page de détail](http://kleegroup.github.io/focus-docs/tutorials/detail-page.html)
+				- [Faire une page de liste](http://kleegroup.github.io/focus-docs/tutorials/list-page.html)
+			</section>		
 
-				- [Focus docs](http://kleegroup.github.io/focus-docs/getting-started/starter-kit.html)
-				- [Focus demo app](https://github.com/KleeGroup/focus-demo-app)
-			</section>
+
 			<section data-background='https://mtpmcg.files.wordpress.com/2014/07/thanks-b-fr-mtpmcg714-sm-2163.jpg'></section>
-					</div>
+		</div>
 	</div>
+
 	<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js">
-		</script>
-
-		<script>
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
-		</script>
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		  ga('create', 'UA-70256271-2', 'auto');
-		  ga('send', 'pageview');
-
-		</script>
-
-
+	<script src="js/reveal.js"></script>
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			history: true,
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
 </body>
 </html>
