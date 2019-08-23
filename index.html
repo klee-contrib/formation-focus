@@ -166,7 +166,7 @@
 				</section>
 
 				<section>
-					<h2>Documentation</h2>n
+					<h2>Documentation</h2>
 					<h2><a href="https://github.com/KleeGroup/focus-docs">Focus docs</a></h2>
 				</section>
 
@@ -193,7 +193,7 @@
 					<h2>Histoire</h2>
 					<p>
 						Il était une fois un gros site web que s'appelait Facebook. Qui dit Facebook, 
-						dit webapp plus grosse que la plus grosse webapp de tes cauchemars; 
+						dit webapp plus grosse que la plus grosse webapp de tes cauchemars ; 
 						et du coup, propension à se retrouver submergé de bugs plus élevés.
 					</p>
 					<p>
@@ -215,10 +215,10 @@
 				<section>
 					<h2>4 concepts</h2>
 					<ul>
-						<li>les <u>actions</u>: proviennent du serveur ou d'une interaction user;</li>
-						<li>le <u>dispatcher</u>: reçoit les actions et transmet à qui veut, un peu comme un EventEmitter global;</li>
-						<li>les <u>stores</u>: équivalant du model de l'architecture MVC, contiennent les données et réagissent aux actions que le dispatcher leur transmet;</li>
-						<li>les <u>views</u>: s'occupent du rendu des données dans le DOM et lancent des actions lorsque l'utilisateur effectue certaines actions.</li>
+						<li>les <u>actions</u> : proviennent du serveur ou d'une interaction user ;</li>
+						<li>le <u>dispatcher</u> : reçoit les actions et transmet à qui veut, un peu comme un EventEmitter global ;</li>
+						<li>les <u>stores</u> : équivalant du model de l'architecture MVC, contiennent les données et réagissent aux actions que le dispatcher leur transmet ;</li>
+						<li>les <u>views</u> : s'occupent du rendu des données dans le DOM et lancent des actions lorsque l'utilisateur effectue certaines actions.</li>
 					</ul>
 				</section>
 
@@ -235,7 +235,7 @@
 				<section>
 					<h2>Les 4 concepts en détail</h2>
 					<p>
-						Ici, nous allons voir en détail les <b>4 concepts</b>  avec <u>et</u> sans les <b>helpers</b> de focus.
+						Ici, nous allons voir en détail les <b>4 concepts</b>  avec <u>et</u> sans les <b>helpers</b> de Focus.
 					</p>
 				</section>
 
@@ -325,20 +325,20 @@
 					<ul>
 						<li>Une action est une fonction</li>
 						<li>Une action peut appeler un service</li>
-						<li>Peut dispatcher au dispatcher: avant, pendant, après l'appel au service</li>
+						<li>Peut dispatcher au dispatcher : avant, pendant, après l'appel au service</li>
 						<li>
 							On peut utiliser un actionBuilder, il en existe plusieurs :
 							<ul>
 								<li>
-									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/application/action-builder.js">simple</a>:
+									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/application/action-builder.js">simple</a> :
 									fonctionne avec un coreStore
 								</li>
 								<li>
-									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/search/action-builder.js">recherche</a>:
+									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/search/action-builder.js">recherche</a> :
 									fonctionne avec un searchStore
 								</li>
 								<li>
-									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/list/action-builder.js">liste</a>:
+									<a href="https://github.com/KleeGroup/focus-core/blob/master/src/list/action-builder.js">liste</a> :
 									fonctionne avec un listStore
 								</li>
 							</ul>
@@ -405,7 +405,7 @@
 							<ul>
 								<li>
 									Store simple :
-									<a href="https://github.com/KleeGroup/focus-core/blob/develop/src/store/CoreStore.js">CoresSore</a>
+									<a href="https://github.com/KleeGroup/focus-core/blob/develop/src/store/CoreStore.js">CoreSore</a>
 								</li>
 								<li>
 									Stores spécialisés :
@@ -415,7 +415,7 @@
 								</li>
 							</ul>
 						</li>
-						<li>Un store notifie: d'un changement d'état, d'une erreur</li>
+						<li>Un store notifie : d'un changement d'état, d'une erreur</li>
 						<li>Chaque noeud de données a un statut et un état de chargement</li>
 					</ul>
 				</section>
@@ -487,9 +487,9 @@
 						// Fonction appellée au changement de données dans le store
 						_onStoreChange() { this.setState({ products: basketStore.products }); },
 						// Le composant s'enregistre auprès du store pour recevoir les modifications
-						componentDidMount() { basketStore.addChangeListner(this._onStoreChange); },
+						componentDidMount() { basketStore.addChangeListener(this._onStoreChange); },
 						// Le composant annule sa souscription auprès du store
-						componentWilltUnmount() { basketStore.removeChangeListener(this._onStoreChange); },
+						componentWillUnmount() { basketStore.removeChangeListener(this._onStoreChange); },
 						render() {
 							&lt;div class="basket"&gt;
 								{`${this.state.products.length} products`} 
@@ -542,7 +542,7 @@
 						{ store: basketStore, properties: ["basket"] },
 						// Fonction de calcul des props du composant connecté
 						props => ({
-							...props, // On transferts les props données par le parent
+							...props, // On transfert les props données par le parent
 							// On pourrait appliquer n'importe quelle transformation
 							basket: basketStore.getBasket()
 						})
@@ -694,7 +694,7 @@
 					</section>
 	
 					<section>
-						<h2>example de définitions</h2>
+						<h2>Exemple de définitions</h2>
 						<section data-markdown>
 							```javascript
 							export const product = {
@@ -828,18 +828,10 @@
 
 			<section data-markdown>
 				## tutos
-				- [Faire une page de détail](http://kleegroup.github.io/focus-docs/tutorial/detail.html)
-				- [Faire une page de liste](http://kleegroup.github.io/focus-docs/tutorial/list.html)
+				- [Faire une page de détail](http://kleegroup.github.io/focus-docs/tutorials/detail-page.html)
+				- [Faire une page de liste](http://kleegroup.github.io/focus-docs/tutorials/list-page.html)
 			</section>		
-			
 
-			<section data-markdown>
-				## Structure applicative
-
-				- [Focus docs](http://kleegroup.github.io/focus-docs/getting-started/starter-kit.html)
-				- [Focus demo app](https://github.com/KleeGroup/focus-demo-app)
-			</section>
-			
 
 			<section data-background='https://mtpmcg.files.wordpress.com/2014/07/thanks-b-fr-mtpmcg714-sm-2163.jpg'></section>
 		</div>
