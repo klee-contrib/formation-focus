@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/get-focus/formation-focus#readme",
   "dependencies": {
-    "reveal.js": "3.7.0"
+    "reveal.js": "3.9.2"
   },
   "devDependencies": {
     "express": "4.16.2",
